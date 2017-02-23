@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">AuntKitchen</string>
+    <string name="title_activity_ahome">ahome</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_aorders">aorders</string>
+    <string name="title_activity_atoday">atoday</string>
+    <string name="title_activity_aprofile">aprofile</string>
+</resources>
