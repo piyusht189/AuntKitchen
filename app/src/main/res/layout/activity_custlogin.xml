@@ -138,7 +138,8 @@
                 android:src="@drawable/signup"
                 android:layout_below="@+id/signupaddress"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="10dp" />
+                android:layout_marginTop="10dp"
+                android:onClick="custsignup" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -204,7 +205,8 @@
                 android:layout_below="@+id/loginpassword"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/login" />
+                android:background="@drawable/login"
+                android:onClick="custlogin" />
 
         </RelativeLayout>
     </ScrollView>

@@ -16,13 +16,13 @@ import android.view.MenuItem;
 
 import java.io.File;
 
-public class aorders extends AppCompatActivity
+public class aabout extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_aorders);
+        setContentView(R.layout.activity_aabout);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -58,7 +58,7 @@ public class aorders extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.aorders, menu);
+        getMenuInflater().inflate(R.menu.aabout, menu);
         return true;
     }
 

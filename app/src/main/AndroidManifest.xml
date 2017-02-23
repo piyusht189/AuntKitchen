@@ -28,7 +28,29 @@
         <activity
             android:name=".aprofile"
             android:label="@string/title_activity_aprofile"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".aabout"
+            android:label="@string/title_activity_aabout"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".chome"
+            android:label="@string/title_activity_chome"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".cmyorders"
+            android:label="@string/title_activity_cmyorders"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".cprofile"
+            android:label="@string/title_activity_cprofile"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".cabout"
+            android:label="@string/title_activity_cabout"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Feedback" />
+        <activity android:name=".AboutDev"></activity>
     </application>
 
 </manifest>

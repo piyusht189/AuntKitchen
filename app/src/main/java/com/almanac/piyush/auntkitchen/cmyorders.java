@@ -16,13 +16,13 @@ import android.view.MenuItem;
 
 import java.io.File;
 
-public class aorders extends AppCompatActivity
+public class cmyorders extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_aorders);
+        setContentView(R.layout.activity_cmyorders);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -58,7 +58,7 @@ public class aorders extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.aorders, menu);
+        getMenuInflater().inflate(R.menu.cmyorders, menu);
         return true;
     }
 
@@ -77,9 +77,9 @@ public class aorders extends AppCompatActivity
             startActivity(new Intent(this,AboutDev.class));
         }else{
             File dir = getFilesDir();
-            File file = new File(dir, "auth_auntemail.txt");
+            File file = new File(dir, "auth_custemail.txt");
             file.delete();
-            startActivity(new Intent(this,auntlogin.class));
+            startActivity(new Intent(this,custlogin.class));
             finish();
         }
 
@@ -92,17 +92,17 @@ public class aorders extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_aorders) {
-            startActivity(new Intent(this,aorders.class));
+        if (id == R.id.nav_chome) {
+            startActivity(new Intent(this,chome.class));
             finish();
-        } else if (id == R.id.nav_atoday) {
-            startActivity(new Intent(this,atoday.class));
+        } else if (id == R.id.nav_cmyorders) {
+            startActivity(new Intent(this,cmyorders.class));
             finish();
-        } else if (id == R.id.nav_aprofile) {
-            startActivity(new Intent(this,aprofile.class));
+        } else if (id == R.id.nav_cmyprofile) {
+            startActivity(new Intent(this,cprofile.class));
             finish();
         } else {
-            startActivity(new Intent(this,aabout.class));
+            startActivity(new Intent(this,cabout.class));
             finish();
         }
 

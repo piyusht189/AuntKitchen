@@ -9,4 +9,9 @@
     <string name="title_activity_aorders">aorders</string>
     <string name="title_activity_atoday">atoday</string>
     <string name="title_activity_aprofile">aprofile</string>
+    <string name="title_activity_aabout">aabout</string>
+    <string name="title_activity_chome">chome</string>
+    <string name="title_activity_cmyorders">cmyorders</string>
+    <string name="title_activity_cprofile">cprofile</string>
+    <string name="title_activity_cabout">cabout</string>
 </resources>

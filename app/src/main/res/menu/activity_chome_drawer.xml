@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+        <item
+            android:id="@+id/nav_chome"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Home" />
+        <item
+            android:id="@+id/nav_cmyorders"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="My Orders" />
+        <item
+            android:id="@+id/nav_cmyprofile"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="My Profile" />
+        <item
+            android:id="@+id/nav_cabout"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="About App" />
+
+
+</menu>
