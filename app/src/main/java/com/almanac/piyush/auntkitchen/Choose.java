@@ -10,7 +10,7 @@ public class Choose extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_choose);
     }
     public void auntyclick(View view){
         startActivity(new Intent(this,auntlogin.class));

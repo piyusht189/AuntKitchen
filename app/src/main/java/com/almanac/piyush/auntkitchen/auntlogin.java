@@ -31,7 +31,7 @@ import java.util.Map;
 
 public class auntlogin extends AppCompatActivity {
     RequestQueue requestQueue;
-    String login_url = "http://kgbvbundu.org/cs2014teach/login.php",signup_url="";
+    String login_url = "http://kgbvbundu.org/capstone/loginaunty.php",signup_url="http://kgbvbundu.org/capstone/registeraunty.php";
     String out="";
     EditText em,pa;
     EditText signupemail,signuppassword,signupconfirmpassword,signupphone,signupaddress,signupname;
@@ -150,6 +150,7 @@ public class auntlogin extends AppCompatActivity {
                     Toast.makeText(auntlogin.this, "Email Already Present", Toast.LENGTH_SHORT).show();
                 }else{
                     pDialog.dismiss();
+                    Toast.makeText(auntlogin.this, response.toString(), Toast.LENGTH_SHORT).show();
                     Toast.makeText(auntlogin.this, "Failed to register, Try Again !", Toast.LENGTH_SHORT).show();
                 }
 

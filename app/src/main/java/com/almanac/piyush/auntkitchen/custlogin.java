@@ -30,7 +30,7 @@ import java.util.Map;
 
 public class custlogin extends AppCompatActivity {
     RequestQueue requestQueue;
-    String login_url = "http://kgbvbundu.org/cs2014teach/login.php",signup_url="";
+    String login_url = "http://kgbvbundu.org/capstone/logincustomer.php",signup_url="http://kgbvbundu.org/capstone/registercustomer.php";
     String out="";
     EditText em,pa;
     EditText signupemail,signuppassword,signupconfirmpassword,signupphone,signupaddress,signupname;
@@ -96,7 +96,7 @@ public class custlogin extends AppCompatActivity {
                     pDialog.dismiss();
                     savedata(email);
                     Toast.makeText(custlogin.this, "Welcome to AuntKitchen!", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(custlogin.this,aorders.class));
+                    startActivity(new Intent(custlogin.this,chome.class));
                     finish();
                 } else{
                     pDialog.dismiss();
@@ -149,6 +149,7 @@ public class custlogin extends AppCompatActivity {
                     Toast.makeText(custlogin.this, "Email Already Present", Toast.LENGTH_SHORT).show();
                 }else{
                     pDialog.dismiss();
+                    Toast.makeText(custlogin.this, response.toString(), Toast.LENGTH_SHORT).show();
                     Toast.makeText(custlogin.this, "Failed to register, Try Again !", Toast.LENGTH_SHORT).show();
                 }
 

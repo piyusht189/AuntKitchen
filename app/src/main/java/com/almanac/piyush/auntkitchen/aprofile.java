@@ -77,7 +77,7 @@ public class aprofile extends AppCompatActivity
             startActivity(new Intent(this,AboutDev.class));
         }else{
             File dir = getFilesDir();
-            File file = new File(dir, "auth_auntemail.txt");
+            File file = new File(dir, "auth_auntyemail.txt");
             file.delete();
             startActivity(new Intent(this,auntlogin.class));
             finish();
