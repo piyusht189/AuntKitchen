@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.almanac.piyush.auntkitchen">
-<uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
@@ -55,7 +56,15 @@
             android:label="@string/title_activity_cabout"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Feedback" />
-        <activity android:name=".AboutDev"></activity>
+        <activity android:name=".AboutDev" />
+        <activity
+            android:name=".updatecust"
+            android:label="@string/title_activity_updatecust"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".updateaunty"
+            android:label="@string/title_activity_updateaunty"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

@@ -1,5 +1,7 @@
 package com.almanac.piyush.auntkitchen;
 
+import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -13,25 +15,153 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
+import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.Map;
 
 public class atoday extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+EditText iname,imenu,iprice;
+    RequestQueue requestQueue;
+    Spinner icategory;
 
+    String arr[]={"Odisha","Maharashtrian","Punjabi","Bengali","Kashmiri","Bihari","Jharkhandi","Tamilian","Hyderabadi","Gujrathi","Rajasthani"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_atoday);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+         iname=(EditText) findViewById(R.id.itemname);
+         imenu=(EditText) findViewById(R.id.itemmenu);
+        iprice=(EditText) findViewById(R.id.itemprice);
+        icategory=(Spinner) findViewById(R.id.categoryspinner);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(atoday.this, android.R.layout.simple_spinner_item, arr);
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        icategory.setAdapter(adapter);
+        requestQueue = Volley.newRequestQueue(atoday.this);
+
+
+
+        final ProgressDialog p = ProgressDialog.show(atoday.this,"Fetching All Data","Please Wait",false,false);
+
+        JSONObject params = new JSONObject();
+        try {
+            params.put("email", loadData());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        final String load_url = "http://kgbvbundu.org/capstone/fetchtoday.php";
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, load_url,params, new Response.Listener<JSONObject>() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onResponse(JSONObject response) {
+                p.dismiss();
+                try {
+                    JSONArray arr = response.getJSONArray("itemdetails");
+                    JSONObject a = arr.getJSONObject(0);
+                    iname.setText(a.getString("atodayitemname"));
+                    iprice.setText(a.getString("atodayitemprice"));
+                    imenu.setText(a.getString("atodayitemmenu"));
+
+
+                }catch (Exception e){
+
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(atoday.this,"Internet is slow. Please try again with good internet speed.",Toast.LENGTH_SHORT).show();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<>();
+                headers.put("Content-Type", "application/json; charset=utf-8");
+                return headers;
+            }
+        };
+        requestQueue.add(jsonObjectRequest);
+
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+
+                final ProgressDialog pDialog = ProgressDialog.show(atoday.this,"Logging...","Please wait...",false,false);
+
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://kgbvbundu.org/capstone/settoday.php", new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        if(response.equals("success")){
+                            pDialog.dismiss();
+                            Toast.makeText(atoday.this, "Todays Menu Updated!", Toast.LENGTH_SHORT).show();
+
+                        } else{
+                            pDialog.dismiss();
+                            Toast.makeText(atoday.this, "Internet Not Connected!", Toast.LENGTH_SHORT).show();
+                        }
+
+
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        pDialog.dismiss();
+                        Toast.makeText(atoday.this,error.getMessage(),Toast.LENGTH_SHORT).show();
+                    }
+                }){
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        //Creating parameters
+                        Map<String,String> params = new Hashtable<>();
+
+                        //Adding parameters
+                        params.put("email", loadData());
+                        params.put("icat", icategory.getSelectedItem().toString());
+                        params.put("iname",iname.getText().toString());
+                        params.put("iprice",iprice.getText().toString());
+                        params.put("imenu",imenu.getText().toString());
+                        // params.put("macid", loadData3());
+
+                        //returning parameters
+                        return params;
+                    }
+                };
+                requestQueue.add(stringRequest);
+
+
             }
         });
 
@@ -44,6 +174,24 @@ public class atoday extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
+
+    protected String loadData() {
+        String FILENAME = "auth_auntyemail.txt";
+        String out = "";
+
+        try {
+            FileInputStream fis1 = getApplication().openFileInput(FILENAME);
+            BufferedReader br1 = new BufferedReader(new InputStreamReader(fis1));
+            String sLine1;
+            while (((sLine1 = br1.readLine()) != null)) {
+                out += sLine1;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return out;
+    }
+
 
     @Override
     public void onBackPressed() {

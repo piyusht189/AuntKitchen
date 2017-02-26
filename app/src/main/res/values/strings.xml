@@ -14,4 +14,6 @@
     <string name="title_activity_cmyorders">cmyorders</string>
     <string name="title_activity_cprofile">cprofile</string>
     <string name="title_activity_cabout">cabout</string>
+    <string name="title_activity_updatecust">updatecust</string>
+    <string name="title_activity_updateaunty">updateaunty</string>
 </resources>

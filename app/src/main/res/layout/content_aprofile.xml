@@ -83,7 +83,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Address"
-                android:id="@+id/designation"
+                android:id="@+id/address"
 
                 android:layout_centerHorizontal="true"
                 android:textSize="20dp"

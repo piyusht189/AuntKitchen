@@ -13,4 +13,96 @@
     tools:context="com.almanac.piyush.auntkitchen.atoday"
     tools:showIn="@layout/app_bar_atoday">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:text="Set Category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="14dp"
+                android:id="@+id/textView9" />
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="21dp"
+                android:id="@+id/categoryspinner"
+                android:layout_below="@+id/textView9"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:text="Item Name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/categoryspinner"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="61dp"
+                android:id="@+id/textView10" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:layout_below="@+id/textView10"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="29dp"
+                android:id="@+id/itemname"
+                android:hint="Item Name" />
+
+            <TextView
+                android:text="Item Menu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/itemname"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="37dp"
+                android:id="@+id/txt" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:layout_below="@+id/txt"
+                android:layout_alignLeft="@+id/itemname"
+                android:layout_alignStart="@+id/itemname"
+                android:layout_marginTop="35dp"
+                android:id="@+id/itemmenu"
+                android:hint="Item Menu" />
+
+            <TextView
+                android:text="Item Price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/itemmenu"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="48dp"
+                android:id="@+id/textView13" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:layout_below="@+id/textView13"
+                android:layout_alignLeft="@+id/itemmenu"
+                android:layout_alignStart="@+id/itemmenu"
+                android:layout_marginTop="58dp"
+                android:id="@+id/itemprice"
+                android:hint="Item Price" />
+
+        </RelativeLayout>
+    </ScrollView>
+
 </RelativeLayout>

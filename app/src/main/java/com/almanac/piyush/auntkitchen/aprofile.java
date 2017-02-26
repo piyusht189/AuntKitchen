@@ -1,9 +1,15 @@
 package com.almanac.piyush.auntkitchen;
 
+import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.widget.ExploreByTouchHelper;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,25 +19,65 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStreamReader;
+import java.util.HashMap;
+import java.util.Map;
 
 public class aprofile extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+    TextView name,email,address,phone;
+    RequestQueue requestQueue;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_aprofile);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        requestQueue = Volley.newRequestQueue(aprofile.this);
 
+
+        name=(TextView) findViewById(R.id.name);
+        email=(TextView) findViewById(R.id.email);
+        address=(TextView) findViewById(R.id.address);
+        phone=(TextView) findViewById(R.id.phone);
+
+          if(isNetworkAvailable()){
+              fetch();
+          }
+        else {
+              Toast.makeText(this, "Unable to fetch , Connect the Internet !", Toast.LENGTH_SHORT).show();
+          }
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent i=new Intent(aprofile.this,updateaunty.class);
+                i.putExtra("name",name.getText().toString());
+                i.putExtra("email",email.getText().toString());
+                i.putExtra("phone",phone.getText().toString());
+                i.putExtra("address",address.getText().toString());
+                startActivity(i);
+                finish();
             }
         });
 
@@ -43,6 +89,71 @@ public class aprofile extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+    }
+    public void fetch(){
+        final ProgressDialog p = ProgressDialog.show(aprofile.this,"Fetching All Data","Please Wait",false,false);
+
+        JSONObject params = new JSONObject();
+        try {
+            params.put("email", loadData());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        String load_url = "http://kgbvbundu.org/capstone/getauntyprofile.php";
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, load_url,params, new Response.Listener<JSONObject>() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onResponse(JSONObject response) {
+                p.dismiss();
+                try {
+                    JSONArray arr = response.getJSONArray("auntydetails");
+                    JSONObject a = arr.getJSONObject(0);
+                    name.setText(a.getString("aname"));
+                    email.setText(a.getString("aemail"));
+                    address.setText(a.getString("aaddress"));
+                    phone.setText(a.getString("aphone"));
+
+                }catch (Exception e){
+
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(aprofile.this,"Internet is slow. Please try again with good internet speed.",Toast.LENGTH_SHORT).show();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<>();
+                headers.put("Content-Type", "application/json; charset=utf-8");
+                return headers;
+            }
+        };
+        requestQueue.add(jsonObjectRequest);
+    }
+    public boolean isNetworkAvailable() {
+        ConnectivityManager cm = (ConnectivityManager)getApplication().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = cm.getActiveNetworkInfo();
+        return networkInfo != null && networkInfo.isConnected();
+    }
+    protected String loadData() {
+        String FILENAME = "auth_auntyemail.txt";
+        String out = "";
+
+        try {
+            FileInputStream fis1 = getApplication().openFileInput(FILENAME);
+            BufferedReader br1 = new BufferedReader(new InputStreamReader(fis1));
+            String sLine1;
+            while (((sLine1 = br1.readLine()) != null)) {
+                out += sLine1;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return out;
     }
 
     @Override
