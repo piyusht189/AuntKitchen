@@ -92,20 +92,19 @@ public class cabout extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_chome) {
-            startActivity(new Intent(this,chome.class));
+        if (id == R.id.nav_corders) {
+            startActivity(new Intent(this,aorders.class));
             finish();
-        } else if (id == R.id.nav_cmyorders) {
-            startActivity(new Intent(this,cmyorders.class));
+        } else if (id == R.id.nav_ctoday) {
+            startActivity(new Intent(this,atoday.class));
             finish();
-        } else if (id == R.id.nav_cmyprofile) {
-            startActivity(new Intent(this,cprofile.class));
+        } else if (id == R.id.nav_cprofile) {
+            startActivity(new Intent(this,aprofile.class));
             finish();
         } else {
-            startActivity(new Intent(this,cabout.class));
+            startActivity(new Intent(this,aabout.class));
             finish();
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
