@@ -16,4 +16,5 @@
     <string name="title_activity_cabout">cabout</string>
     <string name="title_activity_updatecust">updatecust</string>
     <string name="title_activity_updateaunty">updateaunty</string>
+    <string name="title_activity_order">order</string>
 </resources>

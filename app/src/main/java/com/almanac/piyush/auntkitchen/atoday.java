@@ -2,10 +2,10 @@ package com.almanac.piyush.auntkitchen;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -15,7 +15,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -37,6 +36,9 @@ import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Hashtable;
@@ -56,7 +58,7 @@ EditText iname,imenu,iprice;
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
          iname=(EditText) findViewById(R.id.itemname);
-         imenu=(EditText) findViewById(R.id.itemmenu);
+         imenu=(EditText) findViewById(R.id.vfevff);
         iprice=(EditText) findViewById(R.id.itemprice);
         icategory=(Spinner) findViewById(R.id.categoryspinner);
 
@@ -126,6 +128,9 @@ EditText iname,imenu,iprice;
                     public void onResponse(String response) {
                         if(response.equals("success")){
                             pDialog.dismiss();
+                            saveitemname(iname.getText().toString());
+                            saveitemmenu(imenu.getText().toString());
+                            saveitemprice(iprice.getText().toString());
                             Toast.makeText(atoday.this, "Todays Menu Updated!", Toast.LENGTH_SHORT).show();
 
                         } else{
@@ -191,8 +196,48 @@ EditText iname,imenu,iprice;
         }
         return out;
     }
+    protected void saveitemname(String name){
+        String FILENAME1 = "itemname.txt";
+        String verifyme=name;
 
+        try {
+            FileOutputStream fos1 = getApplication().openFileOutput(FILENAME1, Context.MODE_PRIVATE);
+            fos1.write(verifyme.getBytes());
 
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    protected void saveitemmenu(String menu){
+        String FILENAME1 = "itemmenu.txt";
+        String verifyme=menu;
+
+        try {
+            FileOutputStream fos1 = getApplication().openFileOutput(FILENAME1, Context.MODE_PRIVATE);
+            fos1.write(verifyme.getBytes());
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    protected void saveitemprice(String price){
+        String FILENAME1 = "itemname.txt";
+        String verifyme=price;
+
+        try {
+            FileOutputStream fos1 = getApplication().openFileOutput(FILENAME1, Context.MODE_PRIVATE);
+            fos1.write(verifyme.getBytes());
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

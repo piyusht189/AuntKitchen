@@ -13,4 +13,22 @@
     tools:context="com.almanac.piyush.auntkitchen.chome"
     tools:showIn="@layout/app_bar_chome">
 
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="46dp"
+        android:id="@+id/selectcategoryspinner" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/selectcategoryspinner"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="46dp"
+
+        android:id="@+id/auntylist" />
+
 </RelativeLayout>

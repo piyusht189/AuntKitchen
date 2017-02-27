@@ -78,14 +78,14 @@
                 android:layout_alignLeft="@+id/itemname"
                 android:layout_alignStart="@+id/itemname"
                 android:layout_marginTop="35dp"
-                android:id="@+id/itemmenu"
+                android:id="@+id/vfevff"
                 android:hint="Item Menu" />
 
             <TextView
                 android:text="Item Price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/itemmenu"
+                android:layout_below="@+id/vfevff"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="48dp"
                 android:id="@+id/textView13" />
@@ -96,8 +96,8 @@
                 android:inputType="textPersonName"
                 android:ems="10"
                 android:layout_below="@+id/textView13"
-                android:layout_alignLeft="@+id/itemmenu"
-                android:layout_alignStart="@+id/itemmenu"
+                android:layout_alignLeft="@+id/vfevff"
+                android:layout_alignStart="@+id/vfevff"
                 android:layout_marginTop="58dp"
                 android:id="@+id/itemprice"
                 android:hint="Item Price" />
