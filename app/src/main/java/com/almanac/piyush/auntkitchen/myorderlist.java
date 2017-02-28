@@ -7,14 +7,14 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-public class myorderlist extends ArrayAdapter<String> {
+public class MyOrderList extends ArrayAdapter<String> {
 
     Activity context;
     String[] aname,itemname,itemprice,qty,aphone;
 
     TextView taname,titemname,titemprice,titemqty,taphone;
 
-    public myorderlist(Activity context, String[] aname, String[] itemname, String[] itemprice,String[] qty,String[] aphone) {
+    public MyOrderList(Activity context, String[] aname, String[] itemname, String[] itemprice, String[] qty, String[] aphone) {
         super(context, R.layout.myorderrow, aname);
         this.context = context;
         this.aname = aname;

@@ -2,9 +2,6 @@ package com.almanac.piyush.auntkitchen;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -16,7 +13,7 @@ import android.view.MenuItem;
 
 import java.io.File;
 
-public class cabout extends AppCompatActivity
+public class Cabout extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
@@ -72,7 +69,7 @@ public class cabout extends AppCompatActivity
             File dir = getFilesDir();
             File file = new File(dir, "auth_custemail.txt");
             file.delete();
-            startActivity(new Intent(this,custlogin.class));
+            startActivity(new Intent(this,CustLogin.class));
             finish();
         }
 
@@ -86,16 +83,16 @@ public class cabout extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_chome) {
-            startActivity(new Intent(this,chome.class));
+            startActivity(new Intent(this,Chome.class));
             finish();
         } else if (id == R.id.nav_corders) {
-            startActivity(new Intent(this,cmyorders.class));
+            startActivity(new Intent(this,CmyOrders.class));
             finish();
         } else if (id == R.id.nav_cprofile) {
-            startActivity(new Intent(this,cprofile.class));
+            startActivity(new Intent(this,Cprofile.class));
             finish();
         } else {
-            startActivity(new Intent(this,cabout.class));
+            startActivity(new Intent(this,Cabout.class));
             finish();
         }
 

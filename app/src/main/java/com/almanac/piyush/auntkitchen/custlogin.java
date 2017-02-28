@@ -28,7 +28,7 @@ import java.io.InputStreamReader;
 import java.util.Hashtable;
 import java.util.Map;
 
-public class custlogin extends AppCompatActivity {
+public class CustLogin extends AppCompatActivity {
     RequestQueue requestQueue;
     String login_url,signup_url;
     String out="";
@@ -52,7 +52,7 @@ public class custlogin extends AppCompatActivity {
         signupphone=(EditText) findViewById(R.id.signupphone);
         requestQueue = Volley.newRequestQueue(this);
         if(!loadData().equals("")){
-            startActivity(new Intent(custlogin.this,chome.class));
+            startActivity(new Intent(CustLogin.this,Chome.class));
             finish();
         }
     }
@@ -101,12 +101,12 @@ public class custlogin extends AppCompatActivity {
                 if(response.equals(getResources().getString(R.string.success))){
                     pDialog.dismiss();
                     savedata(email);
-                    Toast.makeText(custlogin.this, getResources().getString(R.string.welcome), Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(custlogin.this,chome.class));
+                    Toast.makeText(CustLogin.this, getResources().getString(R.string.welcome), Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(CustLogin.this,Chome.class));
                     finish();
                 } else{
                     pDialog.dismiss();
-                    Toast.makeText(custlogin.this, getResources().getString(R.string.invalid), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CustLogin.this, getResources().getString(R.string.invalid), Toast.LENGTH_SHORT).show();
                 }
 
 
@@ -115,7 +115,7 @@ public class custlogin extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 pDialog.dismiss();
-                Toast.makeText(custlogin.this,error.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(CustLogin.this,error.getMessage(),Toast.LENGTH_SHORT).show();
             }
         }){
             @Override
@@ -148,12 +148,12 @@ public class custlogin extends AppCompatActivity {
 
                     if (response.equals(getResources().getString(R.string.success))) {
                         pDialog.dismiss();
-                        Toast.makeText(custlogin.this, getResources().getString(R.string.successregister), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CustLogin.this, getResources().getString(R.string.successregister), Toast.LENGTH_SHORT).show();
 
                     } else {
                         pDialog.dismiss();
 
-                        Toast.makeText(custlogin.this, getResources().getString(R.string.slownet), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CustLogin.this, getResources().getString(R.string.slownet), Toast.LENGTH_SHORT).show();
                     }
 
                 }
@@ -161,7 +161,7 @@ public class custlogin extends AppCompatActivity {
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     pDialog.dismiss();
-                    Toast.makeText(custlogin.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CustLogin.this, error.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }) {
                 @Override

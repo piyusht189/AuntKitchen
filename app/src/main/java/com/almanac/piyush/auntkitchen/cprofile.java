@@ -8,7 +8,6 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -40,7 +39,7 @@ import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
 
-public class cprofile extends AppCompatActivity
+public class Cprofile extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     TextView name,email,address,phone;
     RequestQueue requestQueue;
@@ -50,7 +49,7 @@ public class cprofile extends AppCompatActivity
         setContentView(R.layout.activity_cprofile);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        requestQueue = Volley.newRequestQueue(cprofile.this);
+        requestQueue = Volley.newRequestQueue(Cprofile.this);
 
 
         name=(TextView) findViewById(R.id.name);
@@ -69,7 +68,7 @@ public class cprofile extends AppCompatActivity
             @Override
             public void onClick(View view) {
 
-                Intent i=new Intent(cprofile.this,updatecust.class);
+                Intent i=new Intent(Cprofile.this,UpdateCust.class);
                 i.putExtra("name",name.getText().toString());
                 i.putExtra("email",email.getText().toString());
                 i.putExtra("phone",phone.getText().toString());
@@ -90,7 +89,7 @@ public class cprofile extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
     public void fetch(){
-        final ProgressDialog p = ProgressDialog.show(cprofile.this,getResources().getString(R.string.fetching),getResources().getString(R.string.pleasewait),false,false);
+        final ProgressDialog p = ProgressDialog.show(Cprofile.this,getResources().getString(R.string.fetching),getResources().getString(R.string.pleasewait),false,false);
 
         JSONObject params = new JSONObject();
         try {
@@ -121,7 +120,7 @@ public class cprofile extends AppCompatActivity
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(cprofile.this,getResources().getString(R.string.slownet),Toast.LENGTH_SHORT).show();
+                Toast.makeText(Cprofile.this,getResources().getString(R.string.slownet),Toast.LENGTH_SHORT).show();
             }
         }) {
             @Override
@@ -188,7 +187,7 @@ public class cprofile extends AppCompatActivity
             File dir = getFilesDir();
             File file = new File(dir, "auth_custemail.txt");
             file.delete();
-            startActivity(new Intent(this,custlogin.class));
+            startActivity(new Intent(this,CustLogin.class));
             finish();
         }
 
@@ -202,16 +201,16 @@ public class cprofile extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_chome) {
-            startActivity(new Intent(this,chome.class));
+            startActivity(new Intent(this,Chome.class));
             finish();
         } else if (id == R.id.nav_corders) {
-            startActivity(new Intent(this,cmyorders.class));
+            startActivity(new Intent(this,CmyOrders.class));
             finish();
         } else if (id == R.id.nav_cprofile) {
-            startActivity(new Intent(this,cprofile.class));
+            startActivity(new Intent(this,Cprofile.class));
             finish();
         } else {
-            startActivity(new Intent(this,cabout.class));
+            startActivity(new Intent(this,Cabout.class));
             finish();
         }
 

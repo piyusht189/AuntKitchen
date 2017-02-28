@@ -83,7 +83,7 @@ public class Aorders extends AppCompatActivity
                         iqty[i]=ob.getString("oitemqty");
                         totalprice[i]=ob.getString("oitemtotalprice");
                     }
-                    todaysorder adapter = new todaysorder(Aorders.this,cname,iname,totalprice,iqty,cphone);
+                    TodaysOrder adapter = new TodaysOrder(Aorders.this,cname,iname,totalprice,iqty,cphone);
                     ls1.setAdapter(adapter);
                 }catch (Exception e){
 
@@ -163,7 +163,7 @@ public class Aorders extends AppCompatActivity
             File dir = getFilesDir();
             File file = new File(dir, "auth_auntyemail.txt");
             file.delete();
-            startActivity(new Intent(this,auntlogin.class));
+            startActivity(new Intent(this,AuntLogin.class));
             finish();
         }
 

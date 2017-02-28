@@ -272,7 +272,7 @@ EditText iname,imenu,iprice;
             File dir = getFilesDir();
             File file = new File(dir, "auth_auntyemail.txt");
             file.delete();
-            startActivity(new Intent(this,auntlogin.class));
+            startActivity(new Intent(this,AuntLogin.class));
             finish();
         }
 

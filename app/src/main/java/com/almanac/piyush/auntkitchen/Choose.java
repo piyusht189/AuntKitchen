@@ -18,9 +18,9 @@ public class Choose extends AppCompatActivity {
         startActivity(startMain);
     }
     public void auntyclick(View view){
-        startActivity(new Intent(this,auntlogin.class));
+        startActivity(new Intent(this,AuntLogin.class));
     }
     public void customerclick(View view){
-        startActivity(new Intent(this,custlogin.class));
+        startActivity(new Intent(this,CustLogin.class));
     }
 }

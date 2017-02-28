@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.almanac.piyush.auntkitchen.order">
+    tools:context="com.almanac.piyush.auntkitchen.Order">
 
     <include layout="@layout/content_order"
         android:id="@+id/include2" />

@@ -22,9 +22,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".custlogin"
+        <activity android:name=".CustLogin"
             android:label="Customer-Login"/>
-        <activity android:name=".auntlogin"
+        <activity android:name=".AuntLogin"
             android:label="Aunty-Login"/>
         <activity
             android:name=".Aorders"
@@ -43,33 +43,33 @@
             android:label="@string/title_activity_aabout"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".chome"
+            android:name=".Chome"
             android:label="@string/title_activity_chome"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".cmyorders"
+            android:name=".CmyOrders"
             android:label="@string/title_activity_cmyorders"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".cprofile"
+            android:name=".Cprofile"
             android:label="@string/title_activity_cprofile"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".cabout"
+            android:name=".Cabout"
             android:label="@string/title_activity_cabout"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Feedback" />
         <activity android:name=".AboutDev" />
         <activity
-            android:name=".updatecust"
+            android:name=".UpdateCust"
             android:label="@string/title_activity_updatecust"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".updateaunty"
+            android:name=".UpdateAunty"
             android:label="@string/title_activity_updateaunty"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".order"
+            android:name=".Order"
             android:label="@string/title_activity_order"
             android:theme="@style/AppTheme.NoActionBar" />
 

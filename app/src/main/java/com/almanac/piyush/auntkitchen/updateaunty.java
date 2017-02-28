@@ -20,7 +20,7 @@ import com.android.volley.toolbox.Volley;
 import java.util.Hashtable;
 import java.util.Map;
 
-public class updateaunty extends AppCompatActivity {
+public class UpdateAunty extends AppCompatActivity {
     EditText nm,ph,add;
 
 
@@ -59,8 +59,8 @@ public class updateaunty extends AppCompatActivity {
                 if(response.equals(getResources().getString(R.string.success))){
                     pDialog.dismiss();
 
-                    Toast.makeText(updateaunty.this, getResources().getString(R.string.updatedsuccess), Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(updateaunty.this,Aprofile.class));
+                    Toast.makeText(UpdateAunty.this, getResources().getString(R.string.updatedsuccess), Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(UpdateAunty.this,Aprofile.class));
                     finish();
                 }
 
@@ -70,7 +70,7 @@ public class updateaunty extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 pDialog.dismiss();
-                Toast.makeText(updateaunty.this,error.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(UpdateAunty.this,error.getMessage(),Toast.LENGTH_SHORT).show();
             }
         }){
             @Override

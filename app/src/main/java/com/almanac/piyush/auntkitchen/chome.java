@@ -37,7 +37,7 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
-public class chome extends AppCompatActivity
+public class Chome extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
 
@@ -61,10 +61,10 @@ public class chome extends AppCompatActivity
         ls= (ListView)findViewById(R.id.auntylist);
         category=(Spinner) findViewById(R.id.selectcategoryspinner);
 
-        requestQueue = Volley.newRequestQueue(chome.this);
+        requestQueue = Volley.newRequestQueue(Chome.this);
 
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(chome.this, android.R.layout.simple_spinner_item, arr);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(Chome.this, android.R.layout.simple_spinner_item, arr);
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
@@ -99,8 +99,8 @@ public class chome extends AppCompatActivity
 
                 // Getting the Country TextView
                 TextView tvCountry = (TextView) linearLayoutChild.getChildAt(3);
-Toast.makeText(chome.this,tvCountry.getText().toString(),Toast.LENGTH_LONG).show();
-                Intent i=new Intent(chome.this,order.class);
+Toast.makeText(Chome.this,tvCountry.getText().toString(),Toast.LENGTH_LONG).show();
+                Intent i=new Intent(Chome.this,Order.class);
                 i.putExtra("aname",tvCountry.getText().toString());
                 startActivity(i);
 
@@ -118,7 +118,7 @@ Toast.makeText(chome.this,tvCountry.getText().toString(),Toast.LENGTH_LONG).show
     }
 public void fetch(String cat){
 
-    final ProgressDialog p = ProgressDialog.show(chome.this,getResources().getString(R.string.fetching),getResources().getString(R.string.pleasewait),false,false);
+    final ProgressDialog p = ProgressDialog.show(Chome.this,getResources().getString(R.string.fetching),getResources().getString(R.string.pleasewait),false,false);
 
     JSONObject params = new JSONObject();
     try {
@@ -151,7 +151,7 @@ public void fetch(String cat){
                     aadd[i]=ob.getString("aaddress");
                 }
 
-                AuntDetailsList adapter = new AuntDetailsList(chome.this,aname,iname,iprice,imenu,aadd);
+                AuntDetailsList adapter = new AuntDetailsList(Chome.this,aname,iname,iprice,imenu,aadd);
                 ls.setAdapter(adapter);
             }catch (Exception e){
 
@@ -160,7 +160,7 @@ public void fetch(String cat){
     }, new Response.ErrorListener() {
         @Override
         public void onErrorResponse(VolleyError error) {
-            Toast.makeText(chome.this,getResources().getString(R.string.slownet),Toast.LENGTH_SHORT).show();
+            Toast.makeText(Chome.this,getResources().getString(R.string.slownet),Toast.LENGTH_SHORT).show();
         }
     }) {
         @Override
@@ -210,7 +210,7 @@ public void fetch(String cat){
             File dir = getFilesDir();
             File file = new File(dir, "auth_custemail.txt");
             file.delete();
-            startActivity(new Intent(this,custlogin.class));
+            startActivity(new Intent(this,CustLogin.class));
             finish();
         }
 
@@ -224,16 +224,16 @@ public void fetch(String cat){
         int id = item.getItemId();
 
         if (id == R.id.nav_chome) {
-            startActivity(new Intent(this,chome.class));
+            startActivity(new Intent(this,Chome.class));
             finish();
         } else if (id == R.id.nav_corders) {
-            startActivity(new Intent(this,cmyorders.class));
+            startActivity(new Intent(this,CmyOrders.class));
             finish();
         } else if (id == R.id.nav_cprofile) {
-            startActivity(new Intent(this,cprofile.class));
+            startActivity(new Intent(this,Cprofile.class));
             finish();
         } else {
-            startActivity(new Intent(this,cabout.class));
+            startActivity(new Intent(this,Cabout.class));
             finish();
         }
 

@@ -7,14 +7,14 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-public class todaysorder extends ArrayAdapter<String> {
+public class TodaysOrder extends ArrayAdapter<String> {
 
     Activity context;
     String[] cname,itemname,itemprice,qty,cphone;
 
     TextView tcname,titemname,titemprice,titemqty,tcphone;
 
-    public todaysorder(Activity context, String[] cname, String[] itemname, String[] itemprice, String[] qty, String[] cphone) {
+    public TodaysOrder(Activity context, String[] cname, String[] itemname, String[] itemprice, String[] qty, String[] cphone) {
         super(context, R.layout.todaysorder, cname);
         this.context = context;
         this.cname = cname;

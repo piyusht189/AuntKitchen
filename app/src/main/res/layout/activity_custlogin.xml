@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.almanac.piyush.auntkitchen.custlogin">
+    tools:context="com.almanac.piyush.auntkitchen.CustLogin">
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"

@@ -3,8 +3,6 @@ package com.almanac.piyush.auntkitchen;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -22,7 +20,7 @@ import com.android.volley.toolbox.Volley;
 import java.util.Hashtable;
 import java.util.Map;
 
-public class updatecust extends AppCompatActivity {
+public class UpdateCust extends AppCompatActivity {
 EditText nm,ph,add;
 
 
@@ -61,8 +59,8 @@ nm=(EditText) findViewById(R.id.name);
                 if(response.equals(getResources().getString(R.string.success))){
                     pDialog.dismiss();
 
-                    Toast.makeText(updatecust.this, getResources().getString(R.string.updatedsuccess), Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(updatecust.this,cprofile.class));
+                    Toast.makeText(UpdateCust.this, getResources().getString(R.string.updatedsuccess), Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(UpdateCust.this,Cprofile.class));
                     finish();
                 }
 
@@ -72,7 +70,7 @@ nm=(EditText) findViewById(R.id.name);
             @Override
             public void onErrorResponse(VolleyError error) {
                 pDialog.dismiss();
-                Toast.makeText(updatecust.this,error.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(UpdateCust.this,error.getMessage(),Toast.LENGTH_SHORT).show();
             }
         }){
             @Override

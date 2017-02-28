@@ -28,7 +28,7 @@ import java.io.InputStreamReader;
 import java.util.Hashtable;
 import java.util.Map;
 
-public class auntlogin extends AppCompatActivity {
+public class AuntLogin extends AppCompatActivity {
     RequestQueue requestQueue;
     String login_url,signup_url;
     String out="";
@@ -50,7 +50,7 @@ public class auntlogin extends AppCompatActivity {
         signupphone=(EditText) findViewById(R.id.signupphone);
         requestQueue = Volley.newRequestQueue(this);
         if(!loadData().equals("")){
-            startActivity(new Intent(auntlogin.this,Aorders.class));
+            startActivity(new Intent(AuntLogin.this,Aorders.class));
             finish();
         }
     }
@@ -102,12 +102,12 @@ if(!em.getText().toString().equals("") || pa.getText().toString().equals("")){
                 if(response.equals(getResources().getString(R.string.success))){
                     pDialog.dismiss();
                     savedata(email);
-                    Toast.makeText(auntlogin.this, getResources().getString(R.string.welcome), Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(auntlogin.this,Aorders.class));
+                    Toast.makeText(AuntLogin.this, getResources().getString(R.string.welcome), Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(AuntLogin.this,Aorders.class));
                     finish();
                 } else{
                     pDialog.dismiss();
-                    Toast.makeText(auntlogin.this, getResources().getString(R.string.invalid), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AuntLogin.this, getResources().getString(R.string.invalid), Toast.LENGTH_SHORT).show();
                 }
 
 
@@ -116,7 +116,7 @@ if(!em.getText().toString().equals("") || pa.getText().toString().equals("")){
             @Override
             public void onErrorResponse(VolleyError error) {
                 pDialog.dismiss();
-                Toast.makeText(auntlogin.this,error.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(AuntLogin.this,error.getMessage(),Toast.LENGTH_SHORT).show();
             }
         }){
             @Override
@@ -148,12 +148,12 @@ if(!em.getText().toString().equals("") || pa.getText().toString().equals("")){
 
                 if(response.equals(getResources().getString(R.string.success))){
                     pDialog.dismiss();
-                    Toast.makeText(auntlogin.this, getResources().getString(R.string.successregister), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AuntLogin.this, getResources().getString(R.string.successregister), Toast.LENGTH_SHORT).show();
 
                 }else{
                     pDialog.dismiss();
-                    Toast.makeText(auntlogin.this, response.toString(), Toast.LENGTH_SHORT).show();
-                    Toast.makeText(auntlogin.this, getResources().getString(R.string.slownet), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AuntLogin.this, response.toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AuntLogin.this, getResources().getString(R.string.slownet), Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -161,7 +161,7 @@ if(!em.getText().toString().equals("") || pa.getText().toString().equals("")){
             @Override
             public void onErrorResponse(VolleyError error) {
                 pDialog.dismiss();
-                Toast.makeText(auntlogin.this,error.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(AuntLogin.this,error.getMessage(),Toast.LENGTH_SHORT).show();
             }
         }){
             @Override

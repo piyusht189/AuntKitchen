@@ -67,7 +67,7 @@ public class Aprofile extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(Aprofile.this,updateaunty.class);
+                Intent i=new Intent(Aprofile.this,UpdateAunty.class);
                 i.putExtra("name",name.getText().toString());
                 i.putExtra("email",email.getText().toString());
                 i.putExtra("phone",phone.getText().toString());
@@ -186,7 +186,7 @@ public class Aprofile extends AppCompatActivity
             File dir = getFilesDir();
             File file = new File(dir, "auth_auntyemail.txt");
             file.delete();
-            startActivity(new Intent(this,auntlogin.class));
+            startActivity(new Intent(this,AuntLogin.class));
             finish();
         }
 

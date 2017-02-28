@@ -4,9 +4,6 @@ import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -37,7 +34,7 @@ import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
 
-public class cmyorders extends AppCompatActivity
+public class CmyOrders extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 ListView ls;
     String[] aname,iname,iqty,totalprice,aphone;
@@ -48,11 +45,11 @@ ListView ls;
         setContentView(R.layout.activity_cmyorders);
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        requestQueue = Volley.newRequestQueue(cmyorders.this);
+        requestQueue = Volley.newRequestQueue(CmyOrders.this);
        ls=(ListView) findViewById(R.id.myorders);
 
 
-        final ProgressDialog p = ProgressDialog.show(cmyorders.this,getResources().getString(R.string.fetching),getResources().getString(R.string.pleasewait),false,false);
+        final ProgressDialog p = ProgressDialog.show(CmyOrders.this,getResources().getString(R.string.fetching),getResources().getString(R.string.pleasewait),false,false);
 
         JSONObject params = new JSONObject();
         try {
@@ -85,7 +82,7 @@ ListView ls;
                         iqty[i]=ob.getString("oitemqty");
                         totalprice[i]=ob.getString("oitemtotalprice");
                     }
-                    myorderlist adapter = new myorderlist(cmyorders.this,aname,iname,totalprice,iqty,aphone);
+                    MyOrderList adapter = new MyOrderList(CmyOrders.this,aname,iname,totalprice,iqty,aphone);
                     ls.setAdapter(adapter);
                 }catch (Exception e){
 
@@ -94,7 +91,7 @@ ListView ls;
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(cmyorders.this,getResources().getString(R.string.slownet),Toast.LENGTH_SHORT).show();
+                Toast.makeText(CmyOrders.this,getResources().getString(R.string.slownet),Toast.LENGTH_SHORT).show();
             }
         }) {
             @Override
@@ -165,7 +162,7 @@ ListView ls;
             File dir = getFilesDir();
             File file = new File(dir, "auth_custemail.txt");
             file.delete();
-            startActivity(new Intent(this,custlogin.class));
+            startActivity(new Intent(this,CustLogin.class));
             finish();
         }
 
@@ -179,16 +176,16 @@ ListView ls;
         int id = item.getItemId();
 
         if (id == R.id.nav_chome) {
-            startActivity(new Intent(this,chome.class));
+            startActivity(new Intent(this,Chome.class));
             finish();
         } else if (id == R.id.nav_corders) {
-            startActivity(new Intent(this,cmyorders.class));
+            startActivity(new Intent(this,CmyOrders.class));
             finish();
         } else if (id == R.id.nav_cprofile) {
-            startActivity(new Intent(this,cprofile.class));
+            startActivity(new Intent(this,Cprofile.class));
             finish();
         } else {
-            startActivity(new Intent(this,cabout.class));
+            startActivity(new Intent(this,Cabout.class));
             finish();
         }
 
