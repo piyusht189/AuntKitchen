@@ -62,7 +62,7 @@ public class cprofile extends AppCompatActivity
             fetch();
         }
         else {
-            Toast.makeText(this, "Unable to fetch , Connect the Internet !", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getResources().getString(R.string.slownet), Toast.LENGTH_SHORT).show();
         }
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -90,7 +90,7 @@ public class cprofile extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
     public void fetch(){
-        final ProgressDialog p = ProgressDialog.show(cprofile.this,"Fetching All Data","Please Wait",false,false);
+        final ProgressDialog p = ProgressDialog.show(cprofile.this,getResources().getString(R.string.fetching),getResources().getString(R.string.pleasewait),false,false);
 
         JSONObject params = new JSONObject();
         try {
@@ -99,7 +99,7 @@ public class cprofile extends AppCompatActivity
             e.printStackTrace();
         }
 
-        String load_url = "http://kgbvbundu.org/capstone/getcustomerprofile.php";
+        String load_url = getResources().getString(R.string.getcustomerprofile);
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, load_url,params, new Response.Listener<JSONObject>() {
             @SuppressLint("SetTextI18n")
@@ -121,7 +121,7 @@ public class cprofile extends AppCompatActivity
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(cprofile.this,"Internet is slow. Please try again with good internet speed.",Toast.LENGTH_SHORT).show();
+                Toast.makeText(cprofile.this,getResources().getString(R.string.slownet),Toast.LENGTH_SHORT).show();
             }
         }) {
             @Override
@@ -204,16 +204,17 @@ public class cprofile extends AppCompatActivity
         if (id == R.id.nav_chome) {
             startActivity(new Intent(this,chome.class));
             finish();
-        } else if (id == R.id.nav_cmyorders) {
+        } else if (id == R.id.nav_corders) {
             startActivity(new Intent(this,cmyorders.class));
             finish();
-        } else if (id == R.id.nav_cmyprofile) {
+        } else if (id == R.id.nav_cprofile) {
             startActivity(new Intent(this,cprofile.class));
             finish();
         } else {
             startActivity(new Intent(this,cabout.class));
             finish();
         }
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

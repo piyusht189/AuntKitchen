@@ -47,7 +47,7 @@
                 android:layout_width="170dp"
                 android:layout_height="170dp"
                 android:id="@+id/imageView5"
-                android:src="@drawable/loginlogo"
+                android:src="@drawable/logo"
                 android:layout_below="@+id/textView42"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp" />

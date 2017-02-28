@@ -53,15 +53,15 @@ nm=(EditText) findViewById(R.id.name);
     }
     public void update(View view){
 
-        final ProgressDialog pDialog = ProgressDialog.show(this,"Logging...","Please wait...",false,false);
+        final ProgressDialog pDialog = ProgressDialog.show(this,getResources().getString(R.string.logging),getResources().getString(R.string.pleasewait),false,false);
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://kgbvbundu.org/capstone/updatecust.php", new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST,getResources().getString(R.string.updatecust), new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                if(response.equals("success")){
+                if(response.equals(getResources().getString(R.string.success))){
                     pDialog.dismiss();
 
-                    Toast.makeText(updatecust.this, "Updated Successfully", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(updatecust.this, getResources().getString(R.string.updatedsuccess), Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(updatecust.this,cprofile.class));
                     finish();
                 }

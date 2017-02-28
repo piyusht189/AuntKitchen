@@ -53,15 +53,15 @@ public class updateaunty extends AppCompatActivity {
     }
     public void update(View view){
 
-        final ProgressDialog pDialog = ProgressDialog.show(this,"Logging...","Please wait...",false,false);
+        final ProgressDialog pDialog = ProgressDialog.show(this,getResources().getString(R.string.logging),getResources().getString(R.string.pleasewait),false,false);
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://kgbvbundu.org/capstone/updateaunty.php", new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, getResources().getString(R.string.updateaunty), new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                if(response.equals("success")){
+                if(response.equals(getResources().getString(R.string.success))){
                     pDialog.dismiss();
 
-                    Toast.makeText(updateaunty.this, "Updated Successfully", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(updateaunty.this, getResources().getString(R.string.updatedsuccess), Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(updateaunty.this,aprofile.class));
                     finish();
                 }

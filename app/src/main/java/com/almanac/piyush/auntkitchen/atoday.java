@@ -50,7 +50,7 @@ EditText iname,imenu,iprice;
     RequestQueue requestQueue;
     Spinner icategory;
 
-    String arr[]={"Odisha","Maharashtrian","Punjabi","Bengali","Kashmiri","Bihari","Jharkhandi","Tamilian","Hyderabadi","Gujrathi","Rajasthani"};
+    String arr[];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,7 +61,7 @@ EditText iname,imenu,iprice;
          imenu=(EditText) findViewById(R.id.vfevff);
         iprice=(EditText) findViewById(R.id.itemprice);
         icategory=(Spinner) findViewById(R.id.categoryspinner);
-
+        arr=getResources().getStringArray(R.array.menu);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(atoday.this, android.R.layout.simple_spinner_item, arr);
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -71,7 +71,7 @@ EditText iname,imenu,iprice;
 
 
 
-        final ProgressDialog p = ProgressDialog.show(atoday.this,"Fetching All Data","Please Wait",false,false);
+        final ProgressDialog p = ProgressDialog.show(atoday.this,getResources().getString(R.string.fetching),getResources().getString(R.string.pleasewait),false,false);
 
         JSONObject params = new JSONObject();
         try {
@@ -80,7 +80,7 @@ EditText iname,imenu,iprice;
             e.printStackTrace();
         }
 
-        final String load_url = "http://kgbvbundu.org/capstone/fetchtoday.php";
+        final String load_url = getResources().getString(R.string.fetchtoday);
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, load_url,params, new Response.Listener<JSONObject>() {
             @SuppressLint("SetTextI18n")
@@ -102,7 +102,7 @@ EditText iname,imenu,iprice;
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(atoday.this,"Internet is slow. Please try again with good internet speed.",Toast.LENGTH_SHORT).show();
+                Toast.makeText(atoday.this,getResources().getString(R.string.slownet),Toast.LENGTH_SHORT).show();
             }
         }) {
             @Override
@@ -121,21 +121,21 @@ EditText iname,imenu,iprice;
             @Override
             public void onClick(View view) {
 
-                final ProgressDialog pDialog = ProgressDialog.show(atoday.this,"Logging...","Please wait...",false,false);
+                final ProgressDialog pDialog = ProgressDialog.show(atoday.this,getResources().getString(R.string.logging),getResources().getString(R.string.pleasewait),false,false);
 
-                StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://kgbvbundu.org/capstone/settoday.php", new Response.Listener<String>() {
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, getResources().getString(R.string.settoday), new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        if(response.equals("success")){
+                        if(response.equals(getResources().getString(R.string.success))){
                             pDialog.dismiss();
                             saveitemname(iname.getText().toString());
                             saveitemmenu(imenu.getText().toString());
                             saveitemprice(iprice.getText().toString());
-                            Toast.makeText(atoday.this, "Todays Menu Updated!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(atoday.this, getResources().getString(R.string.menuupdated), Toast.LENGTH_SHORT).show();
 
                         } else{
                             pDialog.dismiss();
-                            Toast.makeText(atoday.this, "Internet Not Connected!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(atoday.this, getResources().getString(R.string.slownet), Toast.LENGTH_SHORT).show();
                         }
 
 

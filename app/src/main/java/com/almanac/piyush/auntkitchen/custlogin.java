@@ -30,7 +30,7 @@ import java.util.Map;
 
 public class custlogin extends AppCompatActivity {
     RequestQueue requestQueue;
-    String login_url = "http://kgbvbundu.org/capstone/logincustomer.php",signup_url="http://kgbvbundu.org/capstone/registercustomer.php";
+    String login_url,signup_url;
     String out="";
     EditText em,pa;
     EditText signupemail,signuppassword,signupconfirmpassword,signupphone,signupaddress,signupname;
@@ -39,6 +39,10 @@ public class custlogin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custlogin);
         em=(EditText) findViewById(R.id.loginemail);
+
+        login_url = getResources().getString(R.string.logincustomer);
+        signup_url=getResources().getString(R.string.registercustomer);
+
         pa=(EditText) findViewById(R.id.loginpassword);
         signupaddress=(EditText) findViewById(R.id.signupaddress);
         signupconfirmpassword=(EditText) findViewById(R.id.signupconfirmpassword);
@@ -58,7 +62,7 @@ public class custlogin extends AppCompatActivity {
         if(isNetworkAvailable()){
             login();
         }else{
-            Toast.makeText(this, "Internet Not Connected !", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,getResources().getString(R.string.slownet), Toast.LENGTH_SHORT).show();
         }
     }
     public void custsignup(View view){
@@ -66,19 +70,19 @@ public class custlogin extends AppCompatActivity {
         if(signupconfirmpassword.getText().toString().equals(signuppassword.getText().toString())){
             if(signupconfirmpassword.getText().toString().equals("") || signuppassword.getText().toString().equals("") || signupname.getText().toString().equals("") || signupemail.getText().toString().equals("") || signupphone.getText().toString().equals("") || signupaddress.getText().toString().equals(""))
             {
-                Toast.makeText(this, "Kindly fill all the fields!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getResources().getString(R.string.fillallfields), Toast.LENGTH_SHORT).show();
             }
             else {
                 if(isNetworkAvailable()){
                     register();
                 }else{
-                    Toast.makeText(this, "Internet Not Connected !", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getResources().getString(R.string.slownet), Toast.LENGTH_SHORT).show();
                 }
 
             }
         }
         else{
-            Toast.makeText(this, "Password doesn't match!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getResources().getString(R.string.passwordnotmatch), Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -86,21 +90,23 @@ public class custlogin extends AppCompatActivity {
     {
         final String email = em.getText().toString();
         final String pass = pa.getText().toString();
+      if(!email.equals("") || !pass.equals(""))
+      {
+          final ProgressDialog pDialog = ProgressDialog.show(this,getResources().getString(R.string.logging),getResources().getString(R.string.pleasewait),false,false);
 
-        final ProgressDialog pDialog = ProgressDialog.show(this,"Logging...","Please wait...",false,false);
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, login_url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                if(response.equals("success")){
+                if(response.equals(getResources().getString(R.string.success))){
                     pDialog.dismiss();
                     savedata(email);
-                    Toast.makeText(custlogin.this, "Welcome to AuntKitchen!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(custlogin.this, getResources().getString(R.string.welcome), Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(custlogin.this,chome.class));
                     finish();
                 } else{
                     pDialog.dismiss();
-                    Toast.makeText(custlogin.this, "Invalid Username/Password !", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(custlogin.this, getResources().getString(R.string.invalid), Toast.LENGTH_SHORT).show();
                 }
 
 
@@ -127,58 +133,60 @@ public class custlogin extends AppCompatActivity {
             }
         };
         requestQueue.add(stringRequest);
+    }else {
+          Toast.makeText(this, getResources().getString(R.string.fillallfields), Toast.LENGTH_SHORT).show();
+      }
     }
 
+    public void register() {
+        if (!signupaddress.getText().toString().equals("") || !signupemail.getText().toString().equals("") || !signupphone.getText().toString().equals("")) {
+            final ProgressDialog pDialog = ProgressDialog.show(this, getResources().getString(R.string.registering), getResources().getString(R.string.pleasewait), false, false);
 
-    public void register()
-    {
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, signup_url, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
 
-        final ProgressDialog pDialog = ProgressDialog.show(this,"Registering...","Please wait...",false,false);
+                    if (response.equals(getResources().getString(R.string.success))) {
+                        pDialog.dismiss();
+                        Toast.makeText(custlogin.this, getResources().getString(R.string.successregister), Toast.LENGTH_SHORT).show();
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, signup_url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
+                    } else {
+                        pDialog.dismiss();
 
-                if(response.equals("success")){
-                    pDialog.dismiss();
-                    Toast.makeText(custlogin.this, "Successfully Registered , kindly login now!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(custlogin.this, getResources().getString(R.string.slownet), Toast.LENGTH_SHORT).show();
+                    }
 
-                }else if(response.equals("already"))
-                {
-                    pDialog.dismiss();
-                    Toast.makeText(custlogin.this, "Email Already Present", Toast.LENGTH_SHORT).show();
-                }else{
-                    pDialog.dismiss();
-                    Toast.makeText(custlogin.this, response.toString(), Toast.LENGTH_SHORT).show();
-                    Toast.makeText(custlogin.this, "Failed to register, Try Again !", Toast.LENGTH_SHORT).show();
                 }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    pDialog.dismiss();
+                    Toast.makeText(custlogin.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }) {
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    //Creating parameters
+                    Map<String, String> params = new Hashtable<>();
 
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                pDialog.dismiss();
-                Toast.makeText(custlogin.this,error.getMessage(),Toast.LENGTH_SHORT).show();
-            }
-        }){
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                //Creating parameters
-                Map<String,String> params = new Hashtable<>();
+                    //Adding parameters
+                    params.put("email", signupemail.getText().toString());
+                    params.put("password", signuppassword.getText().toString());
+                    params.put("name", signupname.getText().toString());
+                    params.put("phone", signupphone.getText().toString());
+                    params.put("address", signupaddress.getText().toString());
+                    // params.put("macid", loadData3());
 
-                //Adding parameters
-                params.put("email", signupemail.getText().toString());
-                params.put("password", signuppassword.getText().toString());
-                params.put("name",signupname.getText().toString());
-                params.put("phone",signupphone.getText().toString());
-                params.put("address",signupaddress.getText().toString());
-                // params.put("macid", loadData3());
+                    //returning parameters
+                    return params;
+                }
+            };
+            requestQueue.add(stringRequest);
+        }else {
+            Toast.makeText(this, getResources().getString(R.string.fillallfields), Toast.LENGTH_SHORT).show();
+        }
 
-                //returning parameters
-                return params;
-            }
-        };
-        requestQueue.add(stringRequest);
+
     }
     public boolean isNetworkAvailable() {
         ConnectivityManager cm = (ConnectivityManager)

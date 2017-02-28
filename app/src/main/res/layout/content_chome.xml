@@ -31,4 +31,12 @@
 
         android:id="@+id/auntylist" />
 
+    <TextView
+        android:text="Choose Category :"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView30"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

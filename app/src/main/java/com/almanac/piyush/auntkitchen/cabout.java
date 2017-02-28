@@ -26,14 +26,7 @@ public class cabout extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -92,19 +85,20 @@ public class cabout extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_corders) {
-            startActivity(new Intent(this,aorders.class));
+        if (id == R.id.nav_chome) {
+            startActivity(new Intent(this,chome.class));
             finish();
-        } else if (id == R.id.nav_ctoday) {
-            startActivity(new Intent(this,atoday.class));
+        } else if (id == R.id.nav_corders) {
+            startActivity(new Intent(this,cmyorders.class));
             finish();
         } else if (id == R.id.nav_cprofile) {
-            startActivity(new Intent(this,aprofile.class));
+            startActivity(new Intent(this,cprofile.class));
             finish();
         } else {
-            startActivity(new Intent(this,aabout.class));
+            startActivity(new Intent(this,cabout.class));
             finish();
         }
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

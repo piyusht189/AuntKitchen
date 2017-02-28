@@ -52,7 +52,7 @@ ListView ls;
        ls=(ListView) findViewById(R.id.myorders);
 
 
-        final ProgressDialog p = ProgressDialog.show(cmyorders.this,"Fetching All Data","Please Wait",false,false);
+        final ProgressDialog p = ProgressDialog.show(cmyorders.this,getResources().getString(R.string.fetching),getResources().getString(R.string.pleasewait),false,false);
 
         JSONObject params = new JSONObject();
         try {
@@ -61,7 +61,7 @@ ListView ls;
             e.printStackTrace();
         }
 
-        String load_url = "http://kgbvbundu.org/capstone/fetchmyorders.php";
+        String load_url = getResources().getString(R.string.fetchorders);
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, load_url,params, new Response.Listener<JSONObject>() {
             @SuppressLint("SetTextI18n")
@@ -94,7 +94,7 @@ ListView ls;
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(cmyorders.this,"Internet is slow. Please try again with good internet speed.",Toast.LENGTH_SHORT).show();
+                Toast.makeText(cmyorders.this,getResources().getString(R.string.slownet),Toast.LENGTH_SHORT).show();
             }
         }) {
             @Override
@@ -181,16 +181,17 @@ ListView ls;
         if (id == R.id.nav_chome) {
             startActivity(new Intent(this,chome.class));
             finish();
-        } else if (id == R.id.nav_cmyorders) {
+        } else if (id == R.id.nav_corders) {
             startActivity(new Intent(this,cmyorders.class));
             finish();
-        } else if (id == R.id.nav_cmyprofile) {
+        } else if (id == R.id.nav_cprofile) {
             startActivity(new Intent(this,cprofile.class));
             finish();
         } else {
             startActivity(new Intent(this,cabout.class));
             finish();
         }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

@@ -62,7 +62,7 @@ public class aorders extends AppCompatActivity
             e.printStackTrace();
         }
 
-        String load_url = "http://kgbvbundu.org/capstone/fetchtodayorders.php";
+        String load_url = getResources().getString(R.string.fetchtodayorder);
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, load_url,params, new Response.Listener<JSONObject>() {
             @SuppressLint("SetTextI18n")
@@ -95,7 +95,7 @@ public class aorders extends AppCompatActivity
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(aorders.this,"Internet is slow. Please try again with good internet speed.",Toast.LENGTH_SHORT).show();
+                Toast.makeText(aorders.this,getResources().getString(R.string.slownet),Toast.LENGTH_SHORT).show();
             }
         }) {
             @Override

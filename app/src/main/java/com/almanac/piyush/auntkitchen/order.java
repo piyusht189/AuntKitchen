@@ -55,7 +55,7 @@ EditText iqty;
 
         Intent i=getIntent();
 
-        final ProgressDialog p = ProgressDialog.show(order.this,"Fetching All Data","Please Wait",false,false);
+        final ProgressDialog p = ProgressDialog.show(order.this,getResources().getString(R.string.fetching),getResources().getString(R.string.pleasewait),false,false);
 
         JSONObject params = new JSONObject();
         try {
@@ -64,7 +64,7 @@ EditText iqty;
             e.printStackTrace();
         }
 
-        final String load_url = "http://kgbvbundu.org/capstone/getauntydetailorder.php";
+        final String load_url = getResources().getString(R.string.getauntydetailorder);
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, load_url,params, new Response.Listener<JSONObject>() {
             @SuppressLint("SetTextI18n")
@@ -87,7 +87,7 @@ EditText iqty;
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(order.this,"Internet is slow. Please try again with good internet speed.",Toast.LENGTH_SHORT).show();
+                Toast.makeText(order.this,getResources().getString(R.string.slownet),Toast.LENGTH_SHORT).show();
             }
         }) {
             @Override
@@ -105,22 +105,22 @@ EditText iqty;
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final ProgressDialog pDialog = ProgressDialog.show(order.this,"Ordering...","Please wait...",false,false);
+                final ProgressDialog pDialog = ProgressDialog.show(order.this,getResources().getString(R.string.ordering),getResources().getString(R.string.pleasewait),false,false);
                 tp=Integer.parseInt(iqty.getText().toString())*Integer.parseInt(iprice.getText().toString());
 
                 Toast.makeText(order.this, "Total Price:"+String.valueOf(tp), Toast.LENGTH_SHORT).show();
-                StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://kgbvbundu.org/capstone/setorder.php", new Response.Listener<String>() {
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, getResources().getString(R.string.setorder), new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         Toast.makeText(order.this, response, Toast.LENGTH_SHORT).show();
-                        if(response.equals("success")){
+                        if(response.equals(getResources().getString(R.string.success))){
                             pDialog.dismiss();
-                            Toast.makeText(order.this, "success", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(order.this, getResources().getString(R.string.success), Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(order.this,chome.class));
                             finish();
                         } else{
                             pDialog.dismiss();
-                            Toast.makeText(order.this, "failed", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(order.this,getResources().getString(R.string.failed), Toast.LENGTH_SHORT).show();
                         }
 
 

@@ -30,7 +30,7 @@
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                app:srcCompat="@drawable/loginlogo"
+                app:srcCompat="@drawable/logo"
 
                 android:layout_centerHorizontal="true"
                 android:id="@+id/imageView2" />

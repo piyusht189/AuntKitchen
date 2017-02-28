@@ -65,7 +65,7 @@ public class aprofile extends AppCompatActivity
               fetch();
           }
         else {
-              Toast.makeText(this, "Unable to fetch , Connect the Internet !", Toast.LENGTH_SHORT).show();
+              Toast.makeText(this, getResources().getString(R.string.slownet), Toast.LENGTH_SHORT).show();
           }
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -91,7 +91,7 @@ public class aprofile extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
     public void fetch(){
-        final ProgressDialog p = ProgressDialog.show(aprofile.this,"Fetching All Data","Please Wait",false,false);
+        final ProgressDialog p = ProgressDialog.show(aprofile.this,getResources().getString(R.string.fetching),getResources().getString(R.string.pleasewait),false,false);
 
         JSONObject params = new JSONObject();
         try {
@@ -100,7 +100,7 @@ public class aprofile extends AppCompatActivity
             e.printStackTrace();
         }
 
-        String load_url = "http://kgbvbundu.org/capstone/getauntyprofile.php";
+        String load_url = getResources().getString(R.string.getauntyprofile);
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, load_url,params, new Response.Listener<JSONObject>() {
             @SuppressLint("SetTextI18n")
@@ -122,7 +122,7 @@ public class aprofile extends AppCompatActivity
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(aprofile.this,"Internet is slow. Please try again with good internet speed.",Toast.LENGTH_SHORT).show();
+                Toast.makeText(aprofile.this,getResources().getString(R.string.slownet),Toast.LENGTH_SHORT).show();
             }
         }) {
             @Override

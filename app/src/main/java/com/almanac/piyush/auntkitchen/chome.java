@@ -54,13 +54,14 @@ public class chome extends AppCompatActivity
     String[] imenu;
     String[] aname;
     String[] aadd;
-    String[] arr={"--Select Category--","Odisha","Maharashtrian","Punjabi","Bengali","Kashmiri","Bihari","Jharkhandi","Tamilian","Hyderabadi","Gujrathi","Rajasthani"};
+    String[] arr;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chome);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        arr=getResources().getStringArray(R.array.menu);
         ls= (ListView)findViewById(R.id.auntylist);
         category=(Spinner) findViewById(R.id.selectcategoryspinner);
 
@@ -121,7 +122,7 @@ Toast.makeText(chome.this,tvCountry.getText().toString(),Toast.LENGTH_LONG).show
     }
 public void fetch(String cat){
 
-    final ProgressDialog p = ProgressDialog.show(chome.this,"Fetching All Data","Please Wait",false,false);
+    final ProgressDialog p = ProgressDialog.show(chome.this,getResources().getString(R.string.fetching),getResources().getString(R.string.pleasewait),false,false);
 
     JSONObject params = new JSONObject();
     try {
@@ -130,7 +131,7 @@ public void fetch(String cat){
         e.printStackTrace();
     }
 
-    String load_url = "http://kgbvbundu.org/capstone/getlist.php";
+    String load_url = getResources().getString(R.string.getlist);
 
     JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, load_url,params, new Response.Listener<JSONObject>() {
         @SuppressLint("SetTextI18n")
@@ -163,7 +164,7 @@ public void fetch(String cat){
     }, new Response.ErrorListener() {
         @Override
         public void onErrorResponse(VolleyError error) {
-            Toast.makeText(chome.this,"Internet is slow. Please try again with good internet speed.",Toast.LENGTH_SHORT).show();
+            Toast.makeText(chome.this,getResources().getString(R.string.slownet),Toast.LENGTH_SHORT).show();
         }
     }) {
         @Override
@@ -229,10 +230,10 @@ public void fetch(String cat){
         if (id == R.id.nav_chome) {
             startActivity(new Intent(this,chome.class));
             finish();
-        } else if (id == R.id.nav_cmyorders) {
+        } else if (id == R.id.nav_corders) {
             startActivity(new Intent(this,cmyorders.class));
             finish();
-        } else if (id == R.id.nav_cmyprofile) {
+        } else if (id == R.id.nav_cprofile) {
             startActivity(new Intent(this,cprofile.class));
             finish();
         } else {

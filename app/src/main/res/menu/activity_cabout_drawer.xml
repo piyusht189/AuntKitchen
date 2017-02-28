@@ -3,13 +3,13 @@
 
 
     <item
+        android:id="@+id/nav_chome"
+
+        android:title="Home" />
+    <item
         android:id="@+id/nav_corders"
 
         android:title="My Orders" />
-    <item
-        android:id="@+id/nav_ctoday"
-
-        android:title="Set Today" />
     <item
         android:id="@+id/nav_cprofile"
 

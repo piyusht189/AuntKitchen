@@ -14,18 +14,21 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Choose">
+        <activity android:name=".Choose"
+            android:label="Choose-role">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".custlogin" />
-        <activity android:name=".auntlogin" />
+        <activity android:name=".custlogin"
+            android:label="Customer-Login"/>
+        <activity android:name=".auntlogin"
+            android:label="Aunty-Login"/>
         <activity
             android:name=".aorders"
-            android:label="@string/title_activity_aorders"
+            android:label="Todays Orders"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".atoday"

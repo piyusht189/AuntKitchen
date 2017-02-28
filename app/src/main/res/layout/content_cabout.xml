@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:id="@+id/textView2"
-                android:text="About Customer"
+                android:text="@string/customerabout"
                 android:clickable="false"
                 android:cursorVisible="false"
                 android:focusable="false"

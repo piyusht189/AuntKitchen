@@ -37,17 +37,17 @@ public class Feedback extends AppCompatActivity {
 
     public void feed(View view){
         if(!fb.getText().toString().equals("")) {
-            final ProgressDialog pDialog = ProgressDialog.show(this, "Logging...", "Please wait...", false, false);
+            final ProgressDialog pDialog = ProgressDialog.show(this, getResources().getString(R.string.logging),getResources().getString(R.string.pleasewait), false, false);
 
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://kgbvbundu.org/capstone/feedback.php", new Response.Listener<String>() {
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, getResources().getString(R.string.feedback), new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
-                    if (response.equals("success")) {
+                    if (response.equals(getResources().getString(R.string.success))) {
                         pDialog.dismiss();
-                        Toast.makeText(Feedback.this, "Query Submitted Successfully!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Feedback.this, getResources().getString(R.string.successsfully_Sent), Toast.LENGTH_SHORT).show();
                     } else {
                         pDialog.dismiss();
-                        Toast.makeText(Feedback.this, "Internet Not Connected !", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Feedback.this, getResources().getString(R.string.slownet), Toast.LENGTH_SHORT).show();
                     }
 
 
@@ -76,7 +76,7 @@ public class Feedback extends AppCompatActivity {
             requestQueue.add(stringRequest);
         }
         else{
-            Toast.makeText(this, "Kindly fill Query!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getResources().getString(R.string.fillallfields), Toast.LENGTH_SHORT).show();
         }
     }
 
