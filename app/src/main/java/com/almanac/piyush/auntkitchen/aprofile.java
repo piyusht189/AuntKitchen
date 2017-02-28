@@ -8,8 +8,6 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.widget.ExploreByTouchHelper;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -19,7 +17,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,12 +35,11 @@ import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
 
-public class aprofile extends AppCompatActivity
+public class Aprofile extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     TextView name,email,address,phone;
     RequestQueue requestQueue;
@@ -53,7 +49,7 @@ public class aprofile extends AppCompatActivity
         setContentView(R.layout.activity_aprofile);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        requestQueue = Volley.newRequestQueue(aprofile.this);
+        requestQueue = Volley.newRequestQueue(Aprofile.this);
 
 
         name=(TextView) findViewById(R.id.name);
@@ -71,7 +67,7 @@ public class aprofile extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(aprofile.this,updateaunty.class);
+                Intent i=new Intent(Aprofile.this,updateaunty.class);
                 i.putExtra("name",name.getText().toString());
                 i.putExtra("email",email.getText().toString());
                 i.putExtra("phone",phone.getText().toString());
@@ -91,7 +87,7 @@ public class aprofile extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
     public void fetch(){
-        final ProgressDialog p = ProgressDialog.show(aprofile.this,getResources().getString(R.string.fetching),getResources().getString(R.string.pleasewait),false,false);
+        final ProgressDialog p = ProgressDialog.show(Aprofile.this,getResources().getString(R.string.fetching),getResources().getString(R.string.pleasewait),false,false);
 
         JSONObject params = new JSONObject();
         try {
@@ -122,7 +118,7 @@ public class aprofile extends AppCompatActivity
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(aprofile.this,getResources().getString(R.string.slownet),Toast.LENGTH_SHORT).show();
+                Toast.makeText(Aprofile.this,getResources().getString(R.string.slownet),Toast.LENGTH_SHORT).show();
             }
         }) {
             @Override
@@ -204,16 +200,16 @@ public class aprofile extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_aorders) {
-            startActivity(new Intent(this,aorders.class));
+            startActivity(new Intent(this,Aorders.class));
             finish();
         } else if (id == R.id.nav_atoday) {
-            startActivity(new Intent(this,atoday.class));
+            startActivity(new Intent(this,Atoday.class));
             finish();
         } else if (id == R.id.nav_aprofile) {
-            startActivity(new Intent(this,aprofile.class));
+            startActivity(new Intent(this,Aprofile.class));
             finish();
         } else {
-            startActivity(new Intent(this,aabout.class));
+            startActivity(new Intent(this,Aabout.class));
             finish();
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

@@ -2,9 +2,6 @@ package com.almanac.piyush.auntkitchen;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -16,7 +13,7 @@ import android.view.MenuItem;
 
 import java.io.File;
 
-public class aabout extends AppCompatActivity
+public class Aabout extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
@@ -85,16 +82,16 @@ public class aabout extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_aorders) {
-            startActivity(new Intent(this,aorders.class));
+            startActivity(new Intent(this,Aorders.class));
             finish();
         } else if (id == R.id.nav_atoday) {
-            startActivity(new Intent(this,atoday.class));
+            startActivity(new Intent(this,Atoday.class));
             finish();
         } else if (id == R.id.nav_aprofile) {
-            startActivity(new Intent(this,aprofile.class));
+            startActivity(new Intent(this,Aprofile.class));
             finish();
         } else {
-            startActivity(new Intent(this,aabout.class));
+            startActivity(new Intent(this,Aabout.class));
             finish();
         }
 

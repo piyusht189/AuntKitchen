@@ -9,7 +9,7 @@
 
 
     <TextView
-        android:text="Suggest or Submit Your Query here:"
+        android:text="@string/suggestorsubmit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -18,7 +18,7 @@
         android:id="@+id/textView7" />
 
     <Button
-        android:text="Submit"
+        android:text="@string/submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/feedback"

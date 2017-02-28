@@ -27,19 +27,19 @@
         <activity android:name=".auntlogin"
             android:label="Aunty-Login"/>
         <activity
-            android:name=".aorders"
+            android:name=".Aorders"
             android:label="Todays Orders"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".atoday"
+            android:name=".Atoday"
             android:label="@string/title_activity_atoday"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".aprofile"
+            android:name=".Aprofile"
             android:label="@string/title_activity_aprofile"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".aabout"
+            android:name=".Aabout"
             android:label="@string/title_activity_aabout"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

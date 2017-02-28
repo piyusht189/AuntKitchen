@@ -10,7 +10,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.almanac.piyush.auntkitchen.aprofile"
+    tools:context="com.almanac.piyush.auntkitchen.Aprofile"
     tools:showIn="@layout/app_bar_aprofile"
     android:background="#e1e1e1">
 
@@ -45,7 +45,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Name"
+                android:text="@string/name"
                 android:id="@+id/name"
                 android:layout_below="@+id/textView3"
                 android:layout_centerHorizontal="true"
@@ -57,7 +57,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Email"
+                android:text="@string/email"
                 android:id="@+id/email"
                 android:layout_below="@+id/name"
                 android:layout_centerHorizontal="true"
@@ -69,7 +69,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Phone"
+                android:text="@string/phone"
                 android:id="@+id/phone"
 
                 android:layout_centerHorizontal="true"
@@ -82,7 +82,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Address"
+                android:text="@string/address"
                 android:id="@+id/address"
 
                 android:layout_centerHorizontal="true"

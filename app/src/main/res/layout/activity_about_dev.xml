@@ -27,7 +27,7 @@
     </ScrollView>
 
     <TextView
-        android:text="About Developer:"
+        android:text="@string/aboutdeveloper"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/scrollView"
@@ -45,7 +45,7 @@
         android:id="@+id/textView17" />
 
     <TextView
-        android:text="Piyush"
+        android:text="@string/piyush"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView17"
@@ -63,7 +63,7 @@
         android:id="@+id/textView26" />
 
     <TextView
-        android:text="piyusht189@gmail.com"
+        android:text="@string/piyusht189"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView26"
@@ -72,7 +72,7 @@
         android:id="@+id/textView27" />
 
     <TextView
-        android:text="Github"
+        android:text="@string/github"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView27"
@@ -81,7 +81,7 @@
         android:id="@+id/textView28" />
 
     <TextView
-        android:text="http://github.com/piyusht189"
+        android:text="@string/githublink"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView28"

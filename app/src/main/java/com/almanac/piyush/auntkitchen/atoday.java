@@ -44,7 +44,7 @@ import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Map;
 
-public class atoday extends AppCompatActivity
+public class Atoday extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 EditText iname,imenu,iprice;
     RequestQueue requestQueue;
@@ -62,16 +62,16 @@ EditText iname,imenu,iprice;
         iprice=(EditText) findViewById(R.id.itemprice);
         icategory=(Spinner) findViewById(R.id.categoryspinner);
         arr=getResources().getStringArray(R.array.menu);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(atoday.this, android.R.layout.simple_spinner_item, arr);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(Atoday.this, android.R.layout.simple_spinner_item, arr);
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         icategory.setAdapter(adapter);
-        requestQueue = Volley.newRequestQueue(atoday.this);
+        requestQueue = Volley.newRequestQueue(Atoday.this);
 
 
 
-        final ProgressDialog p = ProgressDialog.show(atoday.this,getResources().getString(R.string.fetching),getResources().getString(R.string.pleasewait),false,false);
+        final ProgressDialog p = ProgressDialog.show(Atoday.this,getResources().getString(R.string.fetching),getResources().getString(R.string.pleasewait),false,false);
 
         JSONObject params = new JSONObject();
         try {
@@ -102,7 +102,7 @@ EditText iname,imenu,iprice;
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(atoday.this,getResources().getString(R.string.slownet),Toast.LENGTH_SHORT).show();
+                Toast.makeText(Atoday.this,getResources().getString(R.string.slownet),Toast.LENGTH_SHORT).show();
             }
         }) {
             @Override
@@ -121,7 +121,7 @@ EditText iname,imenu,iprice;
             @Override
             public void onClick(View view) {
 
-                final ProgressDialog pDialog = ProgressDialog.show(atoday.this,getResources().getString(R.string.logging),getResources().getString(R.string.pleasewait),false,false);
+                final ProgressDialog pDialog = ProgressDialog.show(Atoday.this,getResources().getString(R.string.logging),getResources().getString(R.string.pleasewait),false,false);
 
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, getResources().getString(R.string.settoday), new Response.Listener<String>() {
                     @Override
@@ -131,11 +131,11 @@ EditText iname,imenu,iprice;
                             saveitemname(iname.getText().toString());
                             saveitemmenu(imenu.getText().toString());
                             saveitemprice(iprice.getText().toString());
-                            Toast.makeText(atoday.this, getResources().getString(R.string.menuupdated), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Atoday.this, getResources().getString(R.string.menuupdated), Toast.LENGTH_SHORT).show();
 
                         } else{
                             pDialog.dismiss();
-                            Toast.makeText(atoday.this, getResources().getString(R.string.slownet), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Atoday.this, getResources().getString(R.string.slownet), Toast.LENGTH_SHORT).show();
                         }
 
 
@@ -144,7 +144,7 @@ EditText iname,imenu,iprice;
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         pDialog.dismiss();
-                        Toast.makeText(atoday.this,error.getMessage(),Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Atoday.this,error.getMessage(),Toast.LENGTH_SHORT).show();
                     }
                 }){
                     @Override
@@ -286,16 +286,16 @@ EditText iname,imenu,iprice;
         int id = item.getItemId();
 
         if (id == R.id.nav_aorders) {
-            startActivity(new Intent(this,aorders.class));
+            startActivity(new Intent(this,Aorders.class));
             finish();
         } else if (id == R.id.nav_atoday) {
-            startActivity(new Intent(this,atoday.class));
+            startActivity(new Intent(this,Atoday.class));
             finish();
         } else if (id == R.id.nav_aprofile) {
-            startActivity(new Intent(this,aprofile.class));
+            startActivity(new Intent(this,Aprofile.class));
             finish();
         } else {
-            startActivity(new Intent(this,aabout.class));
+            startActivity(new Intent(this,Aabout.class));
             finish();
         }
 

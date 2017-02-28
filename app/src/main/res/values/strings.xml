@@ -70,4 +70,44 @@
     <string name="updateaunty">http://kgbvbundu.org/capstone/updateaunty.php</string>
     <string name="updatedsuccess">Updated Successfully</string>
     <string name="updatecust">http://kgbvbundu.org/capstone/updatecust.php</string>
+    
+    
+    <string name="aboutdeveloper">About Developer:</string>
+    <string name="name">Name:</string>
+    <string name="piyush">Piyush</string>
+    <string name="email">Email</string>
+    <string name="github">Github</string>
+    <string name="piyusht189">piyusht189@gmail.com</string>
+    <string name="githublink">http://github.com/piyusht189</string>
+    <string name="registerauntyxml">Register - Aunty</string>
+    <string name="alreadyreister">Already Registered?</string>
+    <string name="custname">Customer Name : </string>
+    <string name="loginauntyxml">Log In - Aunty</string>
+    <string name="fullname">Full Name</string>
+    <string name="setpassword">Set Password</string>
+    <string name="confirmpassword">Confirm Password</string>
+    <string name="youarean">You are an/a :</string>
+    <string name="aunty">Aunty</string>
+    <string name="password">Password</string>
+    <string name="customer">Customer</string>
+    <string name="registercustomerxml">Register - Customer</string>
+    <string name="logincustomerxml">Log In - Customer</string>
+    <string name="suggestorsubmit">Suggest or Submit Your Query here:</string>
+    <string name="submit">Submit</string>
+    <string name="feed">feed</string>
+    <string name="auntname">Aunt Name:</string>
+   <string name="item">Item</string>
+    <string name="menu">Menu:</string>
+    <string name="price">Price</string>
+    <string name="rs">Rs:   </string>
+    <string name="address">Address: </string>
+    <string name="todaysorder">Today's Order:</string>
+    <string name="myorders">My Orders</string>
+    <string name="quantity">Quantity:</string>
+    <string name="update">Update</string>
+    <string name="description">Redefine the eating rhytm!</string>
+    <string name="phone">Phone</string>
+    <string name="setcategory">Set Category</string>
+    
 </resources>
+

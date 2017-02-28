@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.almanac.piyush.auntkitchen.aabout"
+    tools:context="com.almanac.piyush.auntkitchen.Aabout"
     tools:showIn="@layout/app_bar_aabout">
     <ScrollView
         android:layout_width="wrap_content"

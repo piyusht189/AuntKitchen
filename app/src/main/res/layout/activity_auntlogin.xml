@@ -22,7 +22,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Register - Aunty"
+                android:text="@string/registerauntyxml"
                 android:id="@+id/textView37"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
@@ -56,7 +56,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/signupname"
-                android:hint="Full Name"
+                android:hint="@string/fullname"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
                 android:layout_below="@+id/imageView5"
@@ -75,7 +75,7 @@
                 android:layout_below="@+id/signupname"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:hint="Phone" />
+                android:hint="@string/phone" />
 
             <EditText
                 android:layout_width="match_parent"
@@ -88,7 +88,7 @@
                 android:focusableInTouchMode="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:hint="E-mail" />
+                android:hint="@string/email" />
 
             <EditText
                 android:layout_width="match_parent"
@@ -114,13 +114,13 @@
                 android:layout_below="@+id/signuppassword"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:hint="Confirm Password" />
+                android:hint="@string/confirmpassword" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Address"
+                android:hint="@string/address"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
                 android:id="@+id/signupaddress"
@@ -145,7 +145,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Already Registered?"
+                android:text="@string/alreadyreister"
                 android:id="@+id/textView45"
                 android:layout_below="@+id/signupbutton"
                 android:layout_centerHorizontal="true"
@@ -164,7 +164,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Log In - Aunty"
+                android:text="@string/loginauntyxml"
                 android:id="@+id/textView47"
                 android:layout_below="@+id/textView46"
                 android:layout_centerHorizontal="true"
@@ -183,7 +183,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_marginTop="5dp"
-                android:hint="Email " />
+                android:hint="@string/email" />
 
             <EditText
                 android:layout_width="match_parent"
@@ -196,7 +196,7 @@
                 android:focusableInTouchMode="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:hint="Password" />
+                android:hint="@string/password" />
 
             <ImageButton
                 android:layout_width="170dp"

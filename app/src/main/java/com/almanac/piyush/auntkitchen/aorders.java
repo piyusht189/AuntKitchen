@@ -4,9 +4,6 @@ import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -37,7 +34,7 @@ import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
 
-public class aorders extends AppCompatActivity
+public class Aorders extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     ListView ls1;
     String[] cname,iname,iqty,totalprice,cphone;
@@ -49,11 +46,11 @@ public class aorders extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        requestQueue = Volley.newRequestQueue(aorders.this);
+        requestQueue = Volley.newRequestQueue(Aorders.this);
         ls1=(ListView) findViewById(R.id.todaylist);
 
 
-        final ProgressDialog p = ProgressDialog.show(aorders.this,"Fetching All Data","Please Wait",false,false);
+        final ProgressDialog p = ProgressDialog.show(Aorders.this,"Fetching All Data","Please Wait",false,false);
 
         JSONObject params = new JSONObject();
         try {
@@ -86,7 +83,7 @@ public class aorders extends AppCompatActivity
                         iqty[i]=ob.getString("oitemqty");
                         totalprice[i]=ob.getString("oitemtotalprice");
                     }
-                    todaysorder adapter = new todaysorder(aorders.this,cname,iname,totalprice,iqty,cphone);
+                    todaysorder adapter = new todaysorder(Aorders.this,cname,iname,totalprice,iqty,cphone);
                     ls1.setAdapter(adapter);
                 }catch (Exception e){
 
@@ -95,7 +92,7 @@ public class aorders extends AppCompatActivity
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(aorders.this,getResources().getString(R.string.slownet),Toast.LENGTH_SHORT).show();
+                Toast.makeText(Aorders.this,getResources().getString(R.string.slownet),Toast.LENGTH_SHORT).show();
             }
         }) {
             @Override
@@ -180,16 +177,16 @@ public class aorders extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_aorders) {
-            startActivity(new Intent(this,aorders.class));
+            startActivity(new Intent(this,Aorders.class));
             finish();
         } else if (id == R.id.nav_atoday) {
-            startActivity(new Intent(this,atoday.class));
+            startActivity(new Intent(this,Atoday.class));
             finish();
         } else if (id == R.id.nav_aprofile) {
-            startActivity(new Intent(this,aprofile.class));
+            startActivity(new Intent(this,Aprofile.class));
             finish();
         } else {
-            startActivity(new Intent(this,aabout.class));
+            startActivity(new Intent(this,Aabout.class));
             finish();
         }
 

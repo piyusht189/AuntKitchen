@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.renderscript.Script;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -51,7 +50,7 @@ public class auntlogin extends AppCompatActivity {
         signupphone=(EditText) findViewById(R.id.signupphone);
         requestQueue = Volley.newRequestQueue(this);
         if(!loadData().equals("")){
-            startActivity(new Intent(auntlogin.this,aorders.class));
+            startActivity(new Intent(auntlogin.this,Aorders.class));
             finish();
         }
     }
@@ -104,7 +103,7 @@ if(!em.getText().toString().equals("") || pa.getText().toString().equals("")){
                     pDialog.dismiss();
                     savedata(email);
                     Toast.makeText(auntlogin.this, getResources().getString(R.string.welcome), Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(auntlogin.this,aorders.class));
+                    startActivity(new Intent(auntlogin.this,Aorders.class));
                     finish();
                 } else{
                     pDialog.dismiss();

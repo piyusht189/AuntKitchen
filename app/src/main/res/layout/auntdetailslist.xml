@@ -9,7 +9,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Aunt Name:"
+            android:text="@string/auntname"
             android:id="@+id/ev"
             android:descendantFocusability="blocksDescendants"
             android:layout_marginLeft="10dp"
@@ -18,7 +18,7 @@
             android:textColor="#6b3293" />
 
         <TextView
-            android:text="Itemname"
+            android:text="@string/item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/ev"
@@ -28,7 +28,7 @@
             android:id="@+id/itemname" />
 
         <TextView
-            android:text="Menu:"
+            android:text="@string/menu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/itemname"
@@ -38,7 +38,7 @@
             android:id="@+id/vfevff" />
 
         <TextView
-            android:text="Auntname"
+            android:text="@string/item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/ev"
@@ -47,7 +47,7 @@
             android:id="@+id/auntyname" />
 
         <TextView
-            android:text="menu"
+            android:text="@string/item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/vfevff"
@@ -56,7 +56,7 @@
             android:id="@+id/itemmenu" />
 
         <TextView
-            android:text="price"
+            android:text="@string/item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/itemmenu"
@@ -66,7 +66,7 @@
             android:layout_marginRight="20dp" />
 
         <TextView
-            android:text="Rs:   "
+            android:text="@string/rs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/price"
@@ -84,7 +84,7 @@
             android:id="@+id/textView20" />
 
         <TextView
-            android:text="Address: "
+            android:text="@string/address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/textView20"
@@ -93,7 +93,7 @@
             android:id="@+id/textView21" />
 
         <TextView
-            android:text="addr"
+            android:text="@string/item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/textView21"

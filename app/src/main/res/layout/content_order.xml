@@ -14,7 +14,7 @@
     tools:showIn="@layout/activity_order">
 
     <TextView
-        android:text="AuntName"
+        android:text="@string/auntname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -22,7 +22,7 @@
         android:id="@+id/auntyname" />
 
     <TextView
-        android:text="AuntPhone"
+        android:text="@string/phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/auntyphone"
@@ -32,7 +32,7 @@
         android:layout_alignParentEnd="true" />
 
     <TextView
-        android:text="AuntAddress"
+        android:text="@string/address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="17dp"
@@ -44,7 +44,7 @@
         android:layout_alignParentEnd="true" />
 
     <TextView
-        android:text="Item:"
+        android:text="@string/item"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/auntaddress"
@@ -54,7 +54,7 @@
         android:id="@+id/textView15" />
 
     <TextView
-        android:text="ItemName"
+        android:text="@string/item"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView15"
@@ -64,7 +64,7 @@
         android:id="@+id/iname" />
 
     <TextView
-        android:text="ItemMenu"
+        android:text="@string/menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/iname"
@@ -84,7 +84,7 @@
         android:layout_centerHorizontal="true" />
 
     <TextView
-        android:text="ItemPrice"
+        android:text="@string/price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/iprice"
@@ -94,7 +94,7 @@
         android:layout_alignParentEnd="true" />
 
     <TextView
-        android:text="Rs."
+        android:text="@string/rs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/iprice"
@@ -112,7 +112,7 @@
         android:id="@+id/textView24" />
 
     <TextView
-        android:text="Quantity:"
+        android:text="@string/quantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView25"
@@ -129,5 +129,5 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="18dp"
         android:id="@+id/iqty"
-        android:hint="Quantity" />
+        android:hint="@string/quantity" />
 </RelativeLayout>

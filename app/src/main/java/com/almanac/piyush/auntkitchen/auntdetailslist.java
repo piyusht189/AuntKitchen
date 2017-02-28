@@ -7,14 +7,14 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-public class auntdetailslist extends ArrayAdapter<String> {
+public class AuntDetailsList extends ArrayAdapter<String> {
 
     Activity context;
     String[] aname,itemname,itemprice,itemmenu,aaddress;
 
     TextView taname,titemname,titemprice,titemmenu,taaddress;
 
-    public auntdetailslist(Activity context, String[] aname, String[] itemname, String[] itemprice, String[] itemmenu,String[] aaddress) {
+    public AuntDetailsList(Activity context, String[] aname, String[] itemname, String[] itemprice, String[] itemmenu, String[] aaddress) {
         super(context, R.layout.auntdetailslist, aname);
         this.context = context;
         this.aname = aname;

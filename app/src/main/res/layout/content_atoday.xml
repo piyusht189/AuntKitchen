@@ -10,7 +10,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.almanac.piyush.auntkitchen.atoday"
+    tools:context="com.almanac.piyush.auntkitchen.Atoday"
     tools:showIn="@layout/app_bar_atoday">
 
     <ScrollView
@@ -23,7 +23,7 @@
             android:orientation="vertical" >
 
             <TextView
-                android:text="Set Category"
+                android:text="@string/setcategory"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
@@ -41,7 +41,7 @@
                 android:layout_alignParentStart="true" />
 
             <TextView
-                android:text="Item Name"
+                android:text="@string/item"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/categoryspinner"
@@ -58,10 +58,10 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="29dp"
                 android:id="@+id/itemname"
-                android:hint="Item Name" />
+                android:hint="@string/item" />
 
             <TextView
-                android:text="Item Menu"
+                android:text="@string/menu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/itemname"
@@ -79,10 +79,10 @@
                 android:layout_alignStart="@+id/itemname"
                 android:layout_marginTop="35dp"
                 android:id="@+id/vfevff"
-                android:hint="Item Menu" />
+                android:hint="@string/menu" />
 
             <TextView
-                android:text="Item Price"
+                android:text="@string/price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/vfevff"
@@ -100,7 +100,7 @@
                 android:layout_alignStart="@+id/vfevff"
                 android:layout_marginTop="58dp"
                 android:id="@+id/itemprice"
-                android:hint="Item Price" />
+                android:hint="@string/price" />
 
         </RelativeLayout>
     </ScrollView>

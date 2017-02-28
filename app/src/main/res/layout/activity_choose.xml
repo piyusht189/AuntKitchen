@@ -5,7 +5,7 @@
 
 
     <TextView
-        android:text="You are an/a :"
+        android:text="@string/youarean"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -14,7 +14,7 @@
         android:id="@+id/textView4" />
 
     <Button
-        android:text="Aunty"
+        android:text="@string/aunty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView4"
@@ -24,7 +24,7 @@
         android:onClick="auntyclick" />
 
     <Button
-        android:text="Customer"
+        android:text="@string/customer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/button"
