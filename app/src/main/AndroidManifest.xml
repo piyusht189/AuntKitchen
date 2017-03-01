@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.READ_CONTACTS"></uses-permission>
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
         android:allowBackup="true"
@@ -18,7 +18,9 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-        <activity android:name=".Choose"
+
+        <activity
+            android:name=".Choose"
             android:label="Choose-role">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,10 +28,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CustLogin"
-            android:label="Customer-Login"/>
-        <activity android:name=".AuntLogin"
-            android:label="Aunty-Login"/>
+        <activity
+            android:name=".CustLogin"
+            android:label="Customer-Login" />
+        <activity
+            android:name=".AuntLogin"
+            android:label="Aunty-Login" />
         <activity
             android:name=".Aorders"
             android:label="Todays Orders"
@@ -77,18 +81,16 @@
             android:label="@string/title_activity_order"
             android:theme="@style/AppTheme.NoActionBar" />
 
-
-
-
-
-        <receiver android:name=".SimpleWidgetProvider" android:label="demo widget">
+        <receiver
+            android:name=".SimpleWidgetProvider"
+            android:label="AuntKitchen">
             <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
-            <intent-filter>
-                <action android:name="android.media.RINGER_MODE_CHANGED"/>
-            </intent-filter>
-            <meta-data android:name="android.appwidget.provider" android:resource="@xml/simple_widget_info"/>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/simple_widget_info" />
         </receiver>
         <receiver
             android:name="com.google.android.gms.analytics.AnalyticsReceiver"
@@ -111,6 +113,7 @@
             android:name="com.google.android.gms.ads.AdActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             android:theme="@android:style/Theme.Translucent" />
+
         <receiver
             android:name="com.google.android.gms.analytics.CampaignTrackingReceiver"
             android:exported="true">
@@ -120,6 +123,10 @@
         </receiver>
 
         <service android:name="com.google.android.gms.analytics.CampaignTrackingService" />
+
+        <activity android:name=".UpcomingFeatures">
+
+        </activity>
     </application>
 
 </manifest>

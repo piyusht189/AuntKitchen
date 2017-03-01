@@ -11,7 +11,7 @@
     tools:context="com.almanac.piyush.auntkitchen.AboutDev">
 
     <ScrollView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/scrollView"
         android:layout_alignParentTop="true"
@@ -20,72 +20,60 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="400dp">
 
+
+            <TextView
+                android:text="@string/aboutdeveloper"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:id="@+id/textView16"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="18sp" />
+
+            <TextView
+                android:text="Email : piyusht189@gmail.com"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView16"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="60dp"
+                android:id="@+id/textView26"
+                android:autoLink="email" />
+
+            <TextView
+                android:text="Name : Piyush"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:id="@+id/textView17"
+                android:layout_below="@+id/textView26"
+                android:layout_centerHorizontal="true" />
+
+            <TextView
+                android:text="http://piyusht.com"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView27"
+                android:autoLink="web"
+                android:layout_below="@+id/textView29"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="45dp" />
+
+            <TextView
+                android:text="@string/githublink"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView29"
+                android:layout_marginTop="32dp"
+                android:autoLink="web"
+                android:layout_below="@+id/textView17"
+                android:layout_centerHorizontal="true" />
 
         </RelativeLayout>
     </ScrollView>
 
-    <TextView
-        android:text="@string/aboutdeveloper"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/scrollView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="31dp"
-        android:id="@+id/textView16" />
-
-    <TextView
-        android:text="Name:"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView16"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="29dp"
-        android:id="@+id/textView17" />
-
-    <TextView
-        android:text="@string/piyush"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView17"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="44dp"
-        android:id="@+id/textView18" />
-
-    <TextView
-        android:text="Email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView18"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="48dp"
-        android:id="@+id/textView26" />
-
-    <TextView
-        android:text="@string/piyusht189"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView26"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="35dp"
-        android:id="@+id/textView27" />
-
-    <TextView
-        android:text="@string/github"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView27"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="27dp"
-        android:id="@+id/textView28" />
-
-    <TextView
-        android:text="@string/githublink"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView28"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="41dp"
-        android:id="@+id/textView29" />
 </RelativeLayout>

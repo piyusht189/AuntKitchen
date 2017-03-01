@@ -1,10 +1,18 @@
 package com.almanac.piyush.auntkitchen;
 
+
 import android.app.ProgressDialog;
+import android.content.AsyncTaskLoader;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.content.Loader;
+import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
+
+import android.support.v4.app.LoaderManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -28,11 +36,12 @@ import java.io.InputStreamReader;
 import java.util.Hashtable;
 import java.util.Map;
 
-public class AuntLogin extends AppCompatActivity {
+public class AuntLogin extends AppCompatActivity{
     RequestQueue requestQueue;
     String login_url,signup_url;
-    String out="";
     EditText em,pa;
+    String emm,paa;
+
     EditText signupemail,signuppassword,signupconfirmpassword,signupphone,signupaddress,signupname;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,10 +58,8 @@ public class AuntLogin extends AppCompatActivity {
         signuppassword=(EditText) findViewById(R.id.signuppassword);
         signupphone=(EditText) findViewById(R.id.signupphone);
         requestQueue = Volley.newRequestQueue(this);
-        if(!loadData().equals("")){
-            startActivity(new Intent(AuntLogin.this,Aorders.class));
-            finish();
-        }
+
+
     }
     public void auntlogin(View view)
     {
@@ -89,51 +96,55 @@ if(!em.getText().toString().equals("") || pa.getText().toString().equals("")){
             Toast.makeText(this, getResources().getString(R.string.fillallfields), Toast.LENGTH_SHORT).show();
         }
     }
-    public void login()
-    {
-        final String email = em.getText().toString();
-        final String pass = pa.getText().toString();
+    public void login() {
+        emm = em.getText().toString();
+        paa = pa.getText().toString();
+        if (!emm.equals("") || !paa.equals("")) {
+            final ProgressDialog pDialog = ProgressDialog.show(this, getResources().getString(R.string.logging), getResources().getString(R.string.pleasewait), false, false);
 
-        final ProgressDialog pDialog = ProgressDialog.show(this,getResources().getString(R.string.logging),getResources().getString(R.string.pleasewait),false,false);
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, getResources().getString(R.string.loginaunty), new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    if(response.equals(getResources().getString(R.string.success))){
+                        pDialog.dismiss();
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, login_url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                if(response.equals(getResources().getString(R.string.success))){
-                    pDialog.dismiss();
-                    savedata(email);
-                    Toast.makeText(AuntLogin.this, getResources().getString(R.string.welcome), Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(AuntLogin.this,Aorders.class));
-                    finish();
-                } else{
-                    pDialog.dismiss();
-                    Toast.makeText(AuntLogin.this, getResources().getString(R.string.invalid), Toast.LENGTH_SHORT).show();
+                        saveData(emm);
+                        startActivity(new Intent(AuntLogin.this,Aorders.class));
+                        finish();
+                        Toast.makeText(AuntLogin.this, getResources().getString(R.string.welcome), Toast.LENGTH_SHORT).show();
+
+                    } else{
+                        pDialog.dismiss();
+                        Toast.makeText(AuntLogin.this, getResources().getString(R.string.invalid), Toast.LENGTH_SHORT).show();
+                    }
+
+
                 }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
 
+                    Toast.makeText(AuntLogin.this,error.getMessage(),Toast.LENGTH_SHORT).show();
+                }
+            }){
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    //Creating parameters
+                    Map<String,String> params = new Hashtable<>();
 
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                pDialog.dismiss();
-                Toast.makeText(AuntLogin.this,error.getMessage(),Toast.LENGTH_SHORT).show();
-            }
-        }){
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                //Creating parameters
-                Map<String,String> params = new Hashtable<>();
+                    //Adding parameters
+                    params.put("email", emm);
+                    params.put("password", paa);
+                    // params.put("macid", loadData3());
 
-                //Adding parameters
-                params.put("email", email);
-                params.put("password", pass);
-                // params.put("macid", loadData3());
+                    //returning parameters
+                    return params;
+                }
+            };
+            requestQueue.add(stringRequest);
 
-                //returning parameters
-                return params;
-            }
-        };
-        requestQueue.add(stringRequest);
+        }
+
     }
 
 
@@ -148,6 +159,8 @@ if(!em.getText().toString().equals("") || pa.getText().toString().equals("")){
 
                 if(response.equals(getResources().getString(R.string.success))){
                     pDialog.dismiss();
+
+
                     Toast.makeText(AuntLogin.this, getResources().getString(R.string.successregister), Toast.LENGTH_SHORT).show();
 
                 }else{
@@ -195,38 +208,14 @@ if(!em.getText().toString().equals("") || pa.getText().toString().equals("")){
         return false;
     }
 
-    protected void savedata(String email){
-        String FILENAME1 = "auth_auntyemail.txt";
-        String verifyme=email;
 
-        try {
-            FileOutputStream fos1 = getApplication().openFileOutput(FILENAME1, Context.MODE_PRIVATE);
-            fos1.write(verifyme.getBytes());
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
+    protected void saveData(String email){
+
+
+        DBHelper db=new DBHelper(AuntLogin.this);
+        db.insertContact(email);
     }
-    protected String loadData() {
-        String FILENAME = "auth_auntyemail.txt";
 
-        try {
-            out="";
-            FileInputStream fis1 = getApplication().openFileInput(FILENAME);
-            BufferedReader br1 = new BufferedReader(new InputStreamReader(fis1));
-            String sLine1 = null;
-
-            while (((sLine1 = br1.readLine()) != null)) {
-                out += sLine1;
-            }
-        }catch (FileNotFoundException e){
-            e.printStackTrace();
-        }
-        catch (IOException e){
-            e.printStackTrace();
-        }
-        return out;
-    }
 }

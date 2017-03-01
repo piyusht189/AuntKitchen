@@ -1,6 +1,7 @@
 package com.almanac.piyush.auntkitchen;
 
 import android.app.PendingIntent;
+import android.app.WallpaperInfo;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
@@ -8,12 +9,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.AsyncTask;
+import android.widget.Button;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -22,51 +27,39 @@ import java.util.Random;
 
 public class SimpleWidgetProvider  extends AppWidgetProvider {
     RemoteViews remoteViews;
-    Cursor res = null;
-    String name, phone, email;
-    int widgetId;
-    DBHelper db;
+
+
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
-        final int count = appWidgetIds.length;
 
-        for (int i = 0; i < count; i++) {
-            widgetId = appWidgetIds[i];
 
             remoteViews = new RemoteViews(context.getPackageName(),
                     R.layout.simple_widget);
 
-        }
 
-        Intent intent = new Intent(context, SimpleWidgetProvider.class);
-        intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
-        intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, appWidgetIds);
-
-
-
-
-        appWidgetManager.updateAppWidget(widgetId, remoteViews);
+            remoteViews.setOnClickPendingIntent(R.id.aboutdev,
+                    actionPendingIntent(context));
+        remoteViews.setOnClickPendingIntent(R.id.ufeatures,
+                actionPendingIntent1(context));
+            pushWidgetUpdate(context, remoteViews);
 
     }
-    @Override
-    public void onReceive(Context context, Intent intent) {
-        remoteViews = new RemoteViews(context.getPackageName(),
-                R.layout.simple_widget);
-
-
-
-    remoteViews.setOnClickPendingIntent(R.id.button5, getPendingSelfIntent(context,
-                "ham"));
-
+    public static PendingIntent actionPendingIntent(Context context) {
+        Intent intent = new Intent(context,AboutDev.class);
+        intent.setAction("LAUNCH_ACTIVITY");
+        return PendingIntent.getActivity(context, 0, intent,
+                PendingIntent.FLAG_UPDATE_CURRENT);
     }
-
-    public PendingIntent getPendingSelfIntent(Context context, String action) {
-        Intent intent = new Intent(context, AboutDev.class);
-        intent.setAction(action);
-        return PendingIntent.getBroadcast(context, 0, intent, 0);
+    public static PendingIntent actionPendingIntent1(Context context) {
+        Intent intent = new Intent(context,UpcomingFeatures.class);
+        intent.setAction("LAUNCH_ACTIVITY");
+        return PendingIntent.getActivity(context, 0, intent,
+                PendingIntent.FLAG_UPDATE_CURRENT);
     }
-
+    public static void pushWidgetUpdate(Context context, RemoteViews remoteViews) {
+        ComponentName myWidget = new ComponentName(context,SimpleWidgetProvider.class);
+        AppWidgetManager manager = AppWidgetManager.getInstance(context);
+        manager.updateAppWidget(myWidget, remoteViews);
+    }
 
 }
-
-

@@ -48,7 +48,7 @@
 
     </string-array>
 
-<string name="fetchtoday">http://kgbvbundu.org/capstone/fetchtoday.php</string>
+    <string name="fetchtoday">http://kgbvbundu.org/capstone/fetchtoday.php</string>
     <string name="logging">Logging...</string>
     <string name="settoday">http://kgbvbundu.org/capstone/settoday.php</string>
     <string name="menuupdated">Todays Menu Updated!</string>
@@ -70,8 +70,8 @@
     <string name="updateaunty">http://kgbvbundu.org/capstone/updateaunty.php</string>
     <string name="updatedsuccess">Updated Successfully</string>
     <string name="updatecust">http://kgbvbundu.org/capstone/updatecust.php</string>
-    
-    
+
+
     <string name="aboutdeveloper">About Developer:</string>
     <string name="name">Name:</string>
     <string name="piyush">Piyush</string>
@@ -98,7 +98,7 @@
     <string name="submit">Submit</string>
     <string name="feed">feed</string>
     <string name="auntname">Aunt Name:</string>
-   <string name="item">Item</string>
+    <string name="item">Item</string>
     <string name="menu">Menu:</string>
     <string name="price">Price</string>
     <string name="rs">Rs:   </string>
@@ -112,15 +112,15 @@
     <string name="setcategory">Set Category</string>
 
 
+    <string name="title_activity_second_activiy">Interstitial</string>
+    <string name="msg_welcome">Welcome to Admob. Click on the below button to launch the Interstitial ad.</string>
+    <string name="btn_fullscreen_ad">Show Fullscreen Ad</string>
 
-        <string name="title_activity_second_activiy">Interstitial</string>
-        <string name="msg_welcome">Welcome to Admob. Click on the below button to launch the Interstitial ad.</string>
-        <string name="btn_fullscreen_ad">Show Fullscreen Ad</string>
-
-        <!-- AdMob ad unit IDs -->
-        <string name="banner_home_footer">ca-app-pub-8985887524785232</string>
-
-
+    <!-- AdMob ad unit IDs -->
+    <string name="banner_home_footer">ca-app-pub-8985887524785232</string>
+<string name="fetchfeatures">http://kgbvbundu.org/capstone/fetchfeatures.php</string>
+    <string name="upcomingfeatures">Upcoming Features !</string>
+    <string name="arrow">-></string>
 
 </resources>
 
