@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -139,7 +140,7 @@ public class Aprofile extends AppCompatActivity
         String FILENAME = "auth_auntyemail.txt";
         String out = "";
 
-        try {
+        /*try {
             FileInputStream fis1 = getApplication().openFileInput(FILENAME);
             BufferedReader br1 = new BufferedReader(new InputStreamReader(fis1));
             String sLine1;
@@ -148,8 +149,11 @@ public class Aprofile extends AppCompatActivity
             }
         }catch (Exception e){
             e.printStackTrace();
-        }
-        return out;
+        }*/
+        DBHelper db=new DBHelper(getApplicationContext());
+        Cursor c=db.getData();
+        c.moveToFirst();
+        return c.getString(1);
     }
 
     @Override

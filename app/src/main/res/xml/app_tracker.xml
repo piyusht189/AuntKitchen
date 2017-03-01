@@ -12,7 +12,7 @@
     <string name="ga_sampleFrequency">100.0</string>
 
     <bool name="ga_reportUncaughtExceptions">true</bool>
-
+    <screenName name="com.almanac.piyush.auntkitchen.Choose">ChooseScreen</screenName>
     <!--
       See Project Structure -> Analytics -> Google Analytics -> Learn More
       to learn more about configuring this file.

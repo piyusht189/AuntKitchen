@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.view.View;
@@ -46,22 +47,23 @@ import java.util.Map;
 
 public class Atoday extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-EditText iname,imenu,iprice;
+    EditText iname, imenu, iprice;
     RequestQueue requestQueue;
     Spinner icategory;
 
     String arr[];
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_atoday);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-         iname=(EditText) findViewById(R.id.itemname);
-         imenu=(EditText) findViewById(R.id.vfevff);
-        iprice=(EditText) findViewById(R.id.itemprice);
-        icategory=(Spinner) findViewById(R.id.categoryspinner);
-        arr=getResources().getStringArray(R.array.menu);
+        iname = (EditText) findViewById(R.id.itemname);
+        imenu = (EditText) findViewById(R.id.vfevff);
+        iprice = (EditText) findViewById(R.id.itemprice);
+        icategory = (Spinner) findViewById(R.id.categoryspinner);
+        arr = getResources().getStringArray(R.array.menu);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(Atoday.this, android.R.layout.simple_spinner_item, arr);
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -70,8 +72,7 @@ EditText iname,imenu,iprice;
         requestQueue = Volley.newRequestQueue(Atoday.this);
 
 
-
-        final ProgressDialog p = ProgressDialog.show(Atoday.this,getResources().getString(R.string.fetching),getResources().getString(R.string.pleasewait),false,false);
+        final ProgressDialog p = ProgressDialog.show(Atoday.this, getResources().getString(R.string.fetching), getResources().getString(R.string.pleasewait), false, false);
 
         JSONObject params = new JSONObject();
         try {
@@ -82,7 +83,7 @@ EditText iname,imenu,iprice;
 
         final String load_url = getResources().getString(R.string.fetchtoday);
 
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, load_url,params, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, load_url, params, new Response.Listener<JSONObject>() {
             @SuppressLint("SetTextI18n")
             @Override
             public void onResponse(JSONObject response) {
@@ -95,14 +96,14 @@ EditText iname,imenu,iprice;
                     imenu.setText(a.getString("atodayitemmenu"));
 
 
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(Atoday.this,getResources().getString(R.string.slownet),Toast.LENGTH_SHORT).show();
+                Toast.makeText(Atoday.this, getResources().getString(R.string.slownet), Toast.LENGTH_SHORT).show();
             }
         }) {
             @Override
@@ -115,25 +116,22 @@ EditText iname,imenu,iprice;
         requestQueue.add(jsonObjectRequest);
 
 
-
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                final ProgressDialog pDialog = ProgressDialog.show(Atoday.this,getResources().getString(R.string.logging),getResources().getString(R.string.pleasewait),false,false);
+                final ProgressDialog pDialog = ProgressDialog.show(Atoday.this, getResources().getString(R.string.logging), getResources().getString(R.string.pleasewait), false, false);
 
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, getResources().getString(R.string.settoday), new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        if(response.equals(getResources().getString(R.string.success))){
+                        if (response.equals(getResources().getString(R.string.success))) {
                             pDialog.dismiss();
-                            saveitemname(iname.getText().toString());
-                            saveitemmenu(imenu.getText().toString());
-                            saveitemprice(iprice.getText().toString());
+
                             Toast.makeText(Atoday.this, getResources().getString(R.string.menuupdated), Toast.LENGTH_SHORT).show();
 
-                        } else{
+                        } else {
                             pDialog.dismiss();
                             Toast.makeText(Atoday.this, getResources().getString(R.string.slownet), Toast.LENGTH_SHORT).show();
                         }
@@ -144,20 +142,20 @@ EditText iname,imenu,iprice;
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         pDialog.dismiss();
-                        Toast.makeText(Atoday.this,error.getMessage(),Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Atoday.this, error.getMessage(), Toast.LENGTH_SHORT).show();
                     }
-                }){
+                }) {
                     @Override
                     protected Map<String, String> getParams() throws AuthFailureError {
                         //Creating parameters
-                        Map<String,String> params = new Hashtable<>();
+                        Map<String, String> params = new Hashtable<>();
 
                         //Adding parameters
                         params.put("email", loadData());
                         params.put("icat", icategory.getSelectedItem().toString());
-                        params.put("iname",iname.getText().toString());
-                        params.put("iprice",iprice.getText().toString());
-                        params.put("imenu",imenu.getText().toString());
+                        params.put("iname", iname.getText().toString());
+                        params.put("iprice", iprice.getText().toString());
+                        params.put("imenu", imenu.getText().toString());
                         // params.put("macid", loadData3());
 
                         //returning parameters
@@ -184,7 +182,7 @@ EditText iname,imenu,iprice;
         String FILENAME = "auth_auntyemail.txt";
         String out = "";
 
-        try {
+        /*try {
             FileInputStream fis1 = getApplication().openFileInput(FILENAME);
             BufferedReader br1 = new BufferedReader(new InputStreamReader(fis1));
             String sLine1;
@@ -193,51 +191,14 @@ EditText iname,imenu,iprice;
             }
         }catch (Exception e){
             e.printStackTrace();
-        }
-        return out;
+        }*/
+        DBHelper db = new DBHelper(getApplicationContext());
+        Cursor c = db.getData();
+        c.moveToFirst();
+        return c.getString(1);
     }
-    protected void saveitemname(String name){
-        String FILENAME1 = "itemname.txt";
-        String verifyme=name;
 
-        try {
-            FileOutputStream fos1 = getApplication().openFileOutput(FILENAME1, Context.MODE_PRIVATE);
-            fos1.write(verifyme.getBytes());
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    protected void saveitemmenu(String menu){
-        String FILENAME1 = "itemmenu.txt";
-        String verifyme=menu;
-
-        try {
-            FileOutputStream fos1 = getApplication().openFileOutput(FILENAME1, Context.MODE_PRIVATE);
-            fos1.write(verifyme.getBytes());
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    protected void saveitemprice(String price){
-        String FILENAME1 = "itemname.txt";
-        String verifyme=price;
-
-        try {
-            FileOutputStream fos1 = getApplication().openFileOutput(FILENAME1, Context.MODE_PRIVATE);
-            fos1.write(verifyme.getBytes());
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

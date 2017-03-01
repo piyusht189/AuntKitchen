@@ -138,6 +138,7 @@
                 android:src="@drawable/signup"
                 android:layout_below="@+id/signupaddress"
                 android:layout_centerHorizontal="true"
+                android:contentDescription="@string/signup"
                 android:layout_marginTop="10dp"
                 android:onClick="auntsignup" />
 
@@ -205,6 +206,7 @@
                 android:layout_below="@+id/loginpassword"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
+                android:contentDescription="@string/login"
                 android:background="@drawable/login"
                 android:onClick="auntlogin" />
 

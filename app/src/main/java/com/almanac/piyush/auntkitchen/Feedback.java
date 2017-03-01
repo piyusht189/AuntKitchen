@@ -2,6 +2,7 @@ package com.almanac.piyush.auntkitchen;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
@@ -84,7 +85,7 @@ public class Feedback extends AppCompatActivity {
         String FILENAME = "auth_auntyemail.txt";
         String out = "";
 
-        try {
+        /*try {
             FileInputStream fis1 = getApplication().openFileInput(FILENAME);
             BufferedReader br1 = new BufferedReader(new InputStreamReader(fis1));
             String sLine1;
@@ -93,7 +94,10 @@ public class Feedback extends AppCompatActivity {
             }
         }catch (Exception e){
             e.printStackTrace();
-        }
-        return out;
+        }*/
+        DBHelper db=new DBHelper(getApplicationContext());
+        Cursor c=db.getData();
+        c.moveToFirst();
+        return c.getString(1);
     }
 }

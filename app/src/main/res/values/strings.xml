@@ -89,6 +89,8 @@
     <string name="youarean">You are an/a :</string>
     <string name="aunty">Aunty</string>
     <string name="password">Password</string>
+    <string name="signup">Signup</string>
+    <string name="login">login</string>
     <string name="customer">Customer</string>
     <string name="registercustomerxml">Register - Customer</string>
     <string name="logincustomerxml">Log In - Customer</string>
@@ -101,13 +103,24 @@
     <string name="price">Price</string>
     <string name="rs">Rs:   </string>
     <string name="address">Address: </string>
-    <string name="todaysorder">Today's Order:</string>
+    <string name="todaysorder">Todays Order:</string>
     <string name="myorders">My Orders</string>
     <string name="quantity">Quantity:</string>
     <string name="update">Update</string>
     <string name="description">Redefine the eating rhytm!</string>
     <string name="phone">Phone</string>
     <string name="setcategory">Set Category</string>
-    
+
+
+
+        <string name="title_activity_second_activiy">Interstitial</string>
+        <string name="msg_welcome">Welcome to Admob. Click on the below button to launch the Interstitial ad.</string>
+        <string name="btn_fullscreen_ad">Show Fullscreen Ad</string>
+
+        <!-- AdMob ad unit IDs -->
+        <string name="banner_home_footer">ca-app-pub-8985887524785232</string>
+
+
+
 </resources>
 

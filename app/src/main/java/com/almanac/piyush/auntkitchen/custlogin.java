@@ -3,6 +3,7 @@ package com.almanac.piyush.auntkitchen;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
@@ -51,10 +52,7 @@ public class CustLogin extends AppCompatActivity {
         signuppassword=(EditText) findViewById(R.id.signuppassword);
         signupphone=(EditText) findViewById(R.id.signupphone);
         requestQueue = Volley.newRequestQueue(this);
-        if(!loadData().equals("")){
-            startActivity(new Intent(CustLogin.this,Chome.class));
-            finish();
-        }
+
     }
     public void custlogin(View view)
     {
@@ -100,7 +98,7 @@ public class CustLogin extends AppCompatActivity {
             public void onResponse(String response) {
                 if(response.equals(getResources().getString(R.string.success))){
                     pDialog.dismiss();
-                    savedata(email);
+                    saveData(email);
                     Toast.makeText(CustLogin.this, getResources().getString(R.string.welcome), Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(CustLogin.this,Chome.class));
                     finish();
@@ -148,6 +146,7 @@ public class CustLogin extends AppCompatActivity {
 
                     if (response.equals(getResources().getString(R.string.success))) {
                         pDialog.dismiss();
+
                         Toast.makeText(CustLogin.this, getResources().getString(R.string.successregister), Toast.LENGTH_SHORT).show();
 
                     } else {
@@ -200,11 +199,11 @@ public class CustLogin extends AppCompatActivity {
         return false;
     }
 
-    protected void savedata(String email){
-        String FILENAME1 = "auth_custemail.txt";
+    protected void saveData(String email){
+        String FILENAME1 = "auth_auntyemail.txt";
         String verifyme=email;
 
-        try {
+       /* try {
             FileOutputStream fos1 = getApplication().openFileOutput(FILENAME1, Context.MODE_PRIVATE);
             fos1.write(verifyme.getBytes());
 
@@ -212,26 +211,28 @@ public class CustLogin extends AppCompatActivity {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
+
+        DBHelper db=new DBHelper(getApplicationContext());
+        db.insertContact(email);
     }
     protected String loadData() {
         String FILENAME = "auth_custemail.txt";
+        String out = "";
 
-        try {
-            out="";
+        /*try {
             FileInputStream fis1 = getApplication().openFileInput(FILENAME);
             BufferedReader br1 = new BufferedReader(new InputStreamReader(fis1));
-            String sLine1 = null;
-
+            String sLine1;
             while (((sLine1 = br1.readLine()) != null)) {
                 out += sLine1;
             }
-        }catch (FileNotFoundException e){
+        }catch (Exception e){
             e.printStackTrace();
-        }
-        catch (IOException e){
-            e.printStackTrace();
-        }
-        return out;
+        }*/
+        DBHelper db=new DBHelper(getApplicationContext());
+        Cursor c=db.getData();
+        c.moveToFirst();
+        return c.getString(1);
     }
 }
