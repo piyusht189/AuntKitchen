@@ -140,7 +140,7 @@
                 android:layout_centerHorizontal="true"
                 android:contentDescription="@string/signup"
                 android:layout_marginTop="10dp"
-                android:onClick="auntsignup" />
+                android:onClick="AuntSignup" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -208,7 +208,7 @@
                 android:layout_marginTop="10dp"
                 android:contentDescription="@string/login"
                 android:background="@drawable/login"
-                android:onClick="auntlogin" />
+                android:onClick="AuntLogin" />
 
         </RelativeLayout>
     </ScrollView>
