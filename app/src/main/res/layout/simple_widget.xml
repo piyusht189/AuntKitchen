@@ -22,6 +22,7 @@
        android:layout_height="90dp"
        android:id="@+id/aboutdev"
        android:background="@drawable/devpic"
+       android:contentDescription="@string/cdad"
        android:layout_alignTop="@+id/ufeatures"
        android:layout_toRightOf="@+id/txt"
        android:layout_toEndOf="@+id/txt" />
@@ -43,6 +44,7 @@
        android:id="@+id/ufeatures"
        android:background="@drawable/uf"
        android:layout_marginTop="20dp"
+       android:contentDescription="@string/uf"
        android:layout_below="@+id/txt"
        android:layout_toLeftOf="@+id/txt"
        android:layout_toStartOf="@+id/txt" />
