@@ -56,7 +56,7 @@
        android:textColor="@android:color/holo_blue_bright"
        android:layout_alignBaseline="@+id/textView31"
        android:layout_alignBottom="@+id/textView31"
-       android:layout_toStartOf="@+id/textView31"
+
        android:lines="2"
        android:layout_alignRight="@+id/ufeatures"
        android:layout_alignEnd="@+id/ufeatures"
